@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "nome": "Restaurante do Willy",
+        "descricao": "Desfrute de uma experiência culinária incomparável com os frutos do mar mais frescos da região, preparados com receitas secretas e acompanhados de uma vista espetacular do oceano.",
+        "endereco": "Praia da Vila dos Pelicanos, n° 5",
+        "horario_abertura": "13:00",
+        "horario_fechamento": "23:00",
+        "taxa_entrega": 140,
+        "tempo_preparo": "55 minutos",
+        "tipo": ["almoço", "janta"],
+        "receitas": [104, 108, 115, 118, 119, 120, 124, 130, 131, 151, 152, 167, 168, 170]
+    },
+    {
+        "id": 2,
+        "nome": "Sallon Fruta Estelar",
+        "descricao": "Um lugar encantador para todas as refeições do dia, oferecendo uma vasta seleção de pratos frescos e saborosos que vão desde o café da manhã até a janta.",
+        "endereco": "Estrada do Rio, 3",
+        "horario_abertura": "08:00",
+        "horario_fechamento": "00:00",
+        "taxa_entrega": 180,
+        "tempo_preparo": "40 minutos",
+        "tipo": ["café da manhã", "almoço", "janta"],
+        "receitas": [100, 101, 102, 103, 104, 105, 106, 107, 108, 113, 114, 115, 116, 117, 118, 120, 121, 123, 124, 127, 129, 130, 132, 133, 134, 135, 136, 137, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 171, 173, 174, 175, 176, 177, 178, 179, 181, 183, 184, 185, 186, 187]
+    },
+    {
+        "id": 3,
+        "nome": "Armazém do Pierre",
+        "descricao": "Um restaurante acolhedor que serve uma variedade de pratos deliciosos e nutritivos, ideal para um café da manhã saudável ou um almoço reconfortante. O lugar perfeito para uma refeição saborosa.",
+        "endereco": "Estrada do Rio, 6",
+        "horario_abertura": "07:00",
+        "horario_fechamento": "18:00",
+        "taxa_entrega": 250,
+        "tempo_preparo": "30 minutos",
+        "tipo": ["café da manhã", "almoço"],
+        "receitas": [100, 101, 102, 107, 109, 110, 111, 112, 113, 116, 117, 122, 125, 126, 128, 129, 138, 139, 143, 144, 150, 154, 160, 163, 171, 174, 175, 180, 181, 182, 186, 187]
+    },
+    {
+        "id": 4,
+        "nome": "Restaurante Joja",
+        "descricao": "Um restaurante 24 horas que oferece uma vasta gama de pratos para satisfazer todos os gostos a qualquer hora do dia ou da noite. Com uma ampla seleção de receitas e um ambiente acolhedor, o Restaurante Joja é o destino ideal para quem procura uma refeição rápida e deliciosa, a qualquer momento.",
+        "endereco": "Rua Além do Rio, 2",
+        "horario_abertura": "00:00",
+        "horario_fechamento": "23:59",
+        "taxa_entrega": 100,
+        "tempo_preparo": "60 minutos",
+        "tipo": ["24h"],
+        "receitas": [104, 107, 112, 113, 116, 117, 118, 121, 122, 124, 125, 126, 127, 128, 132, 133, 134, 137, 138, 139, 143, 151, 157, 158, 160, 161, 162, 168, 171, 172, 174, 175, 177, 180, 181, 182, 184, 185, 186, 187]
+    },
+    {
+        "id": 5,
+        "nome": "Resort Gengibre",
+        "descricao": "No Resort Gengibre, oferecemos uma experiência culinária sofisticada . Perfeito para quem busca uma refeição gourmet ou um drink exótico. Com uma ampla gama de receitas e um serviço impecável, nosso resort é o lugar ideal para relaxar e saborear pratos e bebidas de alta qualidade.",
+        "endereco": "Rua Principal, 1",
+        "horario_abertura": "13:00",
+        "horario_fechamento": "19:00",
+        "taxa_entrega": 400,
+        "tempo_preparo": "70 minutos",
+        "tipo": ["Bar"],
+        "receitas": [104, 108, 118, 123, 131, 132, 138, 147, 151, 167, 170, 172, 174, 176, 177, 178, 179, 181, 182, 183, 184, 185, 186, 187]
+    },
+    {
+        "id": 6,
+        "nome": "Cálico",
+        "descricao": "O Cálico é um restaurante que oferece uma seleção diversificada de pratos e bebidas a qualquer hora do dia. Localizado no coração do Deserto de Cálico, é o local ideal para quem busca uma refeição saborosa e acessível durante toda a madrugada. Com um cardápio que atende a todos os gostos e um serviço eficiente, o Cálico é a escolha perfeita para qualquer refeição fora do horário convencional.",
+        "endereco": "Deserto de Cálico, 3",
+        "horario_abertura": "00:00",
+        "horario_fechamento": "23:59",
+        "taxa_entrega": 300,
+        "tempo_preparo": "40 minutos",
+        "tipo": ["24h"],
+        "receitas": [110, 145, 148, 149, 147, 180, 150, 131, 109]
+    }              
+]

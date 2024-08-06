@@ -1,0 +1,789 @@
+[
+    {
+        "id": 100,
+        "nome": "Ovo frito",
+        "descricao": "Lado amarelinho para cima.",
+        "ingredientes": ["Ovo"],
+        "preco": 35,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/1/18/Fried_Egg.png",
+        "categorias": ["Café da Manhã", "Acompanhamento"]
+    },
+    {
+        "id": 101,
+        "nome": "Omelete",
+        "descricao": "Superfofinha.",
+        "ingredientes": ["Ovo", "Leite"],
+        "preco": 125,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/1/12/Omelet.png",
+        "categorias": ["Café da Manhã", "Prato Principal"]
+    },
+    {
+        "id": 102,
+        "nome": "Salada",
+        "descricao": "Uma saudável salada de jardim.",
+        "ingredientes": ["Alho-poró", "Dente-de-leão", "Vinagre"],
+        "preco": 110,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/7/7e/Salad.png",
+        "categorias": ["Acompanhamento", "Vegetariano", "Salada"]
+    },
+    {
+        "id": 103,
+        "nome": "Couve-flor com queijo",
+        "descricao": "Um cheiro maravilhoso!",
+        "ingredientes": ["Couve-flor", "Queijo"],
+        "preco": 300,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/6/6e/Cheese_Cauliflower.png",
+        "categorias": ["Acompanhamento", "Vegetariano"]
+    },
+    {
+        "id": 104,
+        "nome": "Peixe cozido",
+        "descricao": "Peixe cozido em uma cama de ervas.",
+        "ingredientes": ["Peixe-sol", "Brema", "Farinha de trigo"],
+        "preco": 100,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/9/94/Baked_Fish.png",
+        "categorias": ["Prato Principal", "Peixe"]
+    },
+    {
+        "id": 105,
+        "nome": "Sopa de chirívia",
+        "descricao": "Fresca e com um sabor forte.",
+        "ingredientes": ["Chirívia", "Leite", "Vinagre"],
+        "preco": 120,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/7/76/Parsnip_Soup.png",
+        "categorias": ["Sopa", "Vegetariano"]
+    },      
+    {
+        "id": 106,
+        "nome": "Mexido de legumes",
+        "descricao": "Muito nutritivo.",
+        "ingredientes": ["Tomate", "Beterraba"],
+        "preco": 120,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/0/0a/Vegetable_Medley.png",
+        "categorias": ["Acompanhamento", "Vegetariano"]
+    },
+    {
+        "id": 107,
+        "nome": "Café da manhã completo",
+        "descricao": "Dá energia para conquistar o mundo!",
+        "ingredientes": ["Ovo frito", "Leite", "Batata-palha", "Panquecas"],
+        "preco": 350,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/3/3d/Complete_Breakfast.png",
+        "categorias": ["Café da Manhã", "Prato Principal"]
+    },
+    {
+        "id": 108,
+        "nome": "Lula frita",
+        "descricao": "Que puxenta!",
+        "ingredientes": ["Lula", "Farinha de trigo", "Óleo"],
+        "preco": 150,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/2/25/Fried_Calamari.png",
+        "categorias": ["Prato Principal", "Frutos do Mar"]
+    },
+    {
+        "id": 109,
+        "nome": "Pão estranho",
+        "descricao": "O que será que tem dentro?",
+        "ingredientes": ["Farinha de trigo", "Caramujo", "Maionese nula"],
+        "preco": 225,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/5/5e/Strange_Bun.png",
+        "categorias": ["Acompanhamento"]
+    },
+    {
+        "id": 110,
+        "nome": "Almoço da sorte",
+        "descricao": "Uma pequena refeição.",
+        "ingredientes": ["Pepino-do-mar", "Tortilha", "Jasmim-Azul"],
+        "preco": 250,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Lucky_Lunch.png",
+        "categorias": ["Almoço", "Prato Principal"]
+    },
+    {
+        "id": 111,
+        "nome": "Cogumelo frito",
+        "descricao": "Terroso e aromático.",
+        "ingredientes": ["Cogumelo comum", "Morel", "Óleo"],
+        "preco": 200,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/4/4a/Fried_Mushroom.png",
+        "categorias": ["Acompanhamento", "Vegetariano"]
+    },
+    {
+        "id": 112,
+        "nome": "Pizza",
+        "descricao": "Popular pelos motivos certos.",
+        "ingredientes": ["Farinha de trigo", "Tomate", "Queijo"],
+        "preco": 300,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/f/f4/Pizza.png",
+        "categorias": ["Prato Principal"]
+    },
+    {
+        "id": 113,
+        "nome": "Pote de feijão",
+        "descricao": "É bem saudável.",
+        "ingredientes": ["Vagem"],
+        "preco": 100,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/2/24/Bean_Hotpot.png",
+        "categorias": ["Acompanhamento", "Vegetariano"]
+    },
+    {
+        "id": 114,
+        "nome": "Inhames com cobertura",
+        "descricao": "Doces e saborosos... O açúcar dá um toque de caramelo.",
+        "ingredientes": ["Inhame", "Açúcar"],
+        "preco": 200,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/3/30/Glazed_Yams.png",
+        "categorias": ["Sobremesa", "Vegetariano"]
+    },
+    {
+        "id": 115,
+        "nome": "Carpa-surpresa",
+        "descricao": "É insossa e oleosa.",
+        "ingredientes": ["Carpa"],
+        "preco": 90,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/c/cc/Carp_Surprise.png",
+        "categorias": ["Prato Principal", "Frutos do Mar"]
+    },
+    {
+        "id": 116,
+        "nome": "Batata-palha",
+        "descricao": "Crocante e dourada!",
+        "ingredientes": ["Batata", "Óleo"],
+        "preco": 90,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/8/8f/Hashbrowns.png",
+        "categorias": ["Acompanhamento"]
+    },
+    {
+        "id": 117,
+        "nome": "Panquecas",
+        "descricao": "Uma pilha dupla de panquecas fofinhas e macias.",
+        "ingredientes": ["Farinha de trigo", "Ovo"],
+        "preco": 90,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/6/6b/Pancakes.png",
+        "categorias": ["Café da Manhã"]
+    },
+    {
+        "id": 118,
+        "nome": "Jantar de salmão",
+        "descricao": "Os biscoitinhos de limão o tornam especial.",
+        "ingredientes": ["Salmão", "Amaranto", "Couve"],
+        "preco": 125,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/8/8b/Salmon_Dinner.png",
+        "categorias": ["Prato Principal", "Frutos do Mar"]
+    },
+    {
+        "id": 119,
+        "nome": "Taco de peixe",
+        "descricao": "Tem um cheiro delicioso.",
+        "ingredientes": ["Atum", "Tortilha", "Repolho roxo", "Maionese"],
+        "preco": 165,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/d/d5/Fish_Taco.png",
+        "categorias": ["Prato Principal", "Frutos do Mar"]
+    },
+    {
+        "id": 120,
+        "nome": "Achigã Crocante",
+        "descricao": "O acompanhamento com pão está perfeito!",
+        "ingredientes": ["Achigã", "Farinha de trigo", "Óleo"],
+        "preco": 90,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/5/53/Crispy_Bass.png",
+        "categorias": ["Prato Principal", "Frutos do Mar"]
+    },
+    {
+        "id": 121,
+        "nome": "Enroladinhos de pimenta",
+        "descricao": "Enroladinhos apimentados cheios de queijo.",
+        "ingredientes": ["Pimenta quente", "Queijo"],
+        "preco": 130,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/0/08/Pepper_Poppers.png",
+        "categorias": ["Acompanhamento"]
+    },
+    {
+        "id": 122,
+        "nome": "Pão",
+        "descricao": "Uma baguete crocante.",
+        "ingredientes": ["Farinha de trigo"],
+        "preco": 50,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/e/e1/Bread.png",
+        "categorias": ["Acompanhamento"]
+    },
+    {
+        "id": 123,
+        "nome": "Sopa Tom Kha",
+        "descricao": "Que sabores incríveis!",
+        "ingredientes": ["Coco", "Camarão", "Cogumelo comum"],
+        "preco": 175,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/3/3b/Tom_Kha_Soup.png",
+        "categorias": ["Sopa", "Frutos do Mar"]
+    },
+    {
+        "id": 124,
+        "nome": "Sopa de truta",
+        "descricao": "Bem salgada.",
+        "ingredientes": ["Truta arco-íris", "Algas verdes"],
+        "preco": 100,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/4/48/Trout_Soup.png",
+        "categorias": ["Sopa", "Frutos do Mar"]
+    },
+    {
+        "id": 125,
+        "nome": "Bolo de chocolate",
+        "descricao": "Rico e úmido, com uma camada bem grossa de glacê.",
+        "ingredientes": ["Farinha de trigo", "Açúcar", "Ovo"],
+        "preco": 150,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/8/87/Chocolate_Cake.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 126,
+        "nome": "Bolo rosa",
+        "descricao": "Tem pequenos doces de coração em cima.",
+        "ingredientes": ["Melão", "Farinha de trigo", "Açúcar", "Ovo"],
+        "preco": 250,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/3/32/Pink_Cake.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 127,
+        "nome": "Torta de ruibarbo",
+        "descricao": "Huum... picante e doce!",
+        "ingredientes": ["Ruibarbo", "Farinha de trigo", "Açúcar"],
+        "preco": 215,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/2/21/Rhubarb_Pie.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 128,
+        "nome": "Biscoitos",
+        "descricao": "Bem puxento.",
+        "ingredientes": ["Farinha de trigo", "Açúcar", "Ovo"],
+        "preco": 90,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/7/70/Cookie.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 129,
+        "nome": "Espaguete",
+        "descricao": "Um clássico.",
+        "ingredientes": ["Farinha de trigo", "Tomate"],
+        "preco": 75,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/0/08/Spaghetti.png",
+        "categorias": ["Prato Principal"]
+    },
+    {
+        "id": 130,
+        "nome": "Enguia frita",
+        "descricao": "Oleosa, mas cheia de sabor.",
+        "ingredientes": ["Enguia", "Óleo"],
+        "preco": 75,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/8/84/Fried_Eel.png",
+        "categorias": ["Prato Principal", "Frutos do Mar"]
+    },
+    {
+        "id": 131,
+        "nome": "Enguia picante",
+        "descricao": "Como é picante! Cuidado.",
+        "ingredientes": ["Enguia", "Pimenta quente"],
+        "preco": 175,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/f/f2/Spicy_Eel.png",
+        "categorias": ["Prato Principal", "Frutos do Mar"]
+    },
+    {
+        "id": 132,
+        "nome": "Sashimi",
+        "descricao": "Peixe cru fatiado em pedaços finos.",
+        "ingredientes": ["Peixe"],
+        "preco": 75,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/4/41/Sashimi.png",
+        "categorias": ["Prato Principal", "Frutos do Mar"]
+    },
+    {
+        "id": 133,
+        "nome": "Rolinhos de arroz",
+        "descricao": "Peixe e arroz enrolados em algas.",
+        "ingredientes": ["Peixe", "Algas marinhas", "Arroz"],
+        "preco": 220,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/b/b6/Maki_Roll.png",
+        "categorias": ["Prato Principal"]
+    },
+    {
+        "id": 134,
+        "nome": "Tortilha",
+        "descricao": "Pode ser acompanhada de outras comidas ou comida por si só.",
+        "ingredientes": ["Milho"],
+        "preco": 50,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/d/d7/Tortilla.png",
+        "categorias": ["Acompanhamento"]
+    },
+    {
+        "id": 135,
+        "nome": "Prato vermelho",
+        "descricao": "Cheio de antioxidantes.",
+        "ingredientes": ["Repolho roxo", "Rabanete"],
+        "preco": 400,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/4/45/Red_Plate.png",
+        "categorias": ["Prato Principal", "Vegetariano"]
+    },
+    {
+        "id": 136,
+        "nome": "Parmesão com berinjela",
+        "descricao": "Picante, cheia de queijo, e maravilhosa.",
+        "ingredientes": ["Berinjela", "Tomate"],
+        "preco": 200,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/7/73/Eggplant_Parmesan.png",
+        "categorias": ["Prato Principal"]
+    },
+    {
+        "id": 137,
+        "nome": "Pudim de arroz",
+        "descricao": "Cremoso, doce, e divertido de comer.",
+        "ingredientes": ["Leite", "Açúcar", "Arroz"],
+        "preco": 260,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/e/ec/Rice_Pudding.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 138,
+        "nome": "Sorvete",
+        "descricao": "Difícil achar quem não gosta disso.",
+        "ingredientes": ["Leite", "Açúcar"],
+        "preco": 120,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/5/5d/Ice_Cream.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 139,
+        "nome": "Torta de Mirtilo",
+        "descricao": "Sutil e refrescante.",
+        "ingredientes": ["Mirtilo", "Farinha de trigo", "Açúcar", "Ovo"],
+        "preco": 150,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/9/9b/Blueberry_Tart.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 140,
+        "nome": "Prato de outono",
+        "descricao": "Uma amostra da estação.",
+        "ingredientes": ["Inhame", "Abóbora"],
+        "preco": 350,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/f/f4/Autumn%27s_Bounty.png",
+        "categorias": ["Prato Principal", "Vegetariano"]
+    },
+    {
+        "id": 141,
+        "nome": "Sopa de abóbora",
+        "descricao": "Favorita da estação.",
+        "ingredientes": ["Abóbora", "Leite"],
+        "preco": 300,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/5/59/Pumpkin_Soup.png",
+        "categorias": ["Sopa"]
+    },
+    {
+        "id": 142,
+        "nome": "Superprato",
+        "descricao": "Um prato muito energizante.",
+        "ingredientes": ["Couve chinesa", "Oxicoco", "Alcachofra"],
+        "preco": 220,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/d/d2/Super_Meal.png",
+        "categorias": ["Prato Principal", "Vegetariano"]
+    },
+    {
+        "id": 143,
+        "nome": "Molho de oxicoco",
+        "descricao": "Uma refeição festiva.",
+        "ingredientes": ["Oxicoco", "Açúcar"],
+        "preco": 120,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/0/0b/Cranberry_Sauce.png",
+        "categorias": ["Acompanhamento"]
+    },
+    {
+        "id": 144,
+        "nome": "Recheio",
+        "descricao": "Ah... o doce de pão quente e salva.",
+        "ingredientes": ["Pão", "Oxicoco", "Avelã"],
+        "preco": 165,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/9/9a/Stuffing.png",
+        "categorias": ["Acompanhamento"]
+    },
+    {
+        "id": 145,
+        "nome": "Almoço de fazendeiro",
+        "descricao": "Isto vai dar bastante energia.",
+        "ingredientes": ["Omelete", "Chirívia"],
+        "preco": 150,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/7/79/Farmer%27s_Lunch.png",
+        "categorias": ["Prato Principal"]
+    },
+    {
+        "id": 146,
+        "nome": "Hambúrguer de Sobrevivência",
+        "descricao": "Uma refeição conveniente para o explorador.",
+        "ingredientes": ["Pão", "Cenoura subterrânea", "Berinjela"],
+        "preco": 180,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/8/87/Survival_Burger.png",
+        "categorias": ["Prato Principal", "Vegetariano"]
+    },
+    {
+        "id": 147,
+        "nome": "Prato do mar",
+        "descricao": "Mantém você quente no vento frio do mar.",
+        "ingredientes": ["Sardinha", "Batata-palha"],
+        "preco": 220,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/f/ff/Dish_O%27_The_Sea.png",
+        "categorias": ["Prato Principal"]
+    },
+    {
+        "id": 148,
+        "nome": "Refeição de mineiro",
+        "descricao": "Mantém você energizado.",
+        "ingredientes": ["Cenoura subterrânea", "Açúcar", "Leite"],
+        "preco": 200,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/1/12/Miner%27s_Treat.png",
+        "categorias": ["Prato Principal"]
+    },
+    {
+        "id": 149,
+        "nome": "Prato de raízes",
+        "descricao": "Vai fazer você comer até terra.",
+        "ingredientes": ["Cenoura subterrânea", "Raiz de inverno"],
+        "preco": 100,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/e/e0/Roots_Platter.png",
+        "categorias": ["Prato Principal", "Vegetariano"]
+    },
+    {
+        "id": 150,
+        "nome": "Café Expresso Triplo",
+        "descricao": "É mais forte que café normal!",
+        "ingredientes": ["Café"],
+        "preco": 450,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/3/36/Triple_Shot_Espresso.png",
+        "categorias": ["Bebida"]
+    },
+    {
+        "id": 151,
+        "nome": "Pudim de espuma do mar",
+        "descricao": "Este pudim salgado vai realmente levar você à mentalidade marítima!",
+        "ingredientes": ["Linguado", "Carpa da meia-noite", "Tinta de Lula"],
+        "preco": 300,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/3/33/Seafoam_Pudding.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 152,
+        "nome": "Sopa de alga",
+        "descricao": "Um pouco gosmenta.",
+        "ingredientes": ["Algas verdes"],
+        "preco": 100,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/5/53/Algae_Soup.png",
+        "categorias": ["Sopa", "Vegetariano"]
+    },
+    {
+        "id": 153,
+        "nome": "Caldo pálido",
+        "descricao": "Um caldo delicado com um toque de enxofre.",
+        "ingredientes": ["Algas brancas"],
+        "preco": 150,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/7/7e/Pale_Broth.png",
+        "categorias": ["Sopa", "Vegetariano"]
+    },
+    {
+        "id": 154,
+        "nome": "Pudim de ameixa",
+        "descricao": "Uma delícia de feriado tradicional.",
+        "ingredientes": ["Ameixa selvagem", "Farinha de trigo", "Açúcar"],
+        "preco": 260,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/a/a0/Plum_Pudding.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 155,
+        "nome": "Molho de alcachofra",
+        "descricao": "Muito refrescante.",
+        "ingredientes": ["Alcachofra", "Leite"],
+        "preco": 210,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/7/77/Artichoke_Dip.png",
+        "categorias": ["Acompanhamento"]
+    },
+    {
+        "id": 156,
+        "nome": "Refogado",
+        "descricao": "Legumes à juliana em uma cama de arroz.",
+        "ingredientes": ["Cenoura subterrânea", "Cogumelo comum", "Couve", "Óleo"],
+        "preco": 335,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/e/ed/Stir_Fry.png",
+        "categorias": ["Prato Principal"]
+    },
+    {
+        "id": 157,
+        "nome": "Avelãs Torradas",
+        "descricao": "O processo de torra dá um rico sabor de floresta.",
+        "ingredientes": ["Avelã"],
+        "preco": 175,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/1/18/Roasted_Hazelnuts.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 158,
+        "nome": "Torta de Abóbora",
+        "descricao": "Sabor extremamente delicado, crosta seca e crocante.",
+        "ingredientes": ["Abóbora", "Farinha de trigo", "Leite", "Açúcar"],
+        "preco": 225,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/7/7d/Pumpkin_Pie.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 159,
+        "nome": "Salada de Rabanete",
+        "descricao": "Os rabanetes são tão crocantes!",
+        "ingredientes": ["Óleo", "Vinagre", "Rabanete"],
+        "preco": 200,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/b/b9/Radish_Salad.png",
+        "categorias": ["Salada", "Vegetariano"]
+    },
+    {
+        "id": 160,
+        "nome": "Salada de Frutas",
+        "descricao": "Uma combinação deliciosa de frutas de verão.",
+        "ingredientes": ["Mirtilo", "Melão", "Damasco"],
+        "preco": 263,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/9/9e/Fruit_Salad.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 161,
+        "nome": "Mexido de Amoras",
+        "descricao": "Não tem nada igual.",
+        "ingredientes": ["Amora", "Açúcar", "Farinha de trigo"],
+        "preco": 175,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/7/70/Blackberry_Cobbler.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 162,
+        "nome": "Doce de Oxicoco",
+        "descricao": "Doce o suficiente para mascarar o amargor da fruta.",
+        "ingredientes": ["Oxicoco", "Maçã", "Açúcar"],
+        "preco": 125,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/9/9d/Cranberry_Candy.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 163,
+        "nome": "Brusqueta",
+        "descricao": "Tomates assados em pão branco crocante.",
+        "ingredientes": ["Pão", "Óleo", "Tomate"],
+        "preco": 113,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/c/ca/Bruschetta.png",
+        "categorias": ["Acompanhamento"]
+    },
+    {
+        "id": 164,
+        "nome": "Salada de Repolho",
+        "descricao": "Leve, fresquinha e saudável.",
+        "ingredientes": ["Repolho roxo", "Vinagre", "Maionese"],
+        "preco": 213,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/e/e1/Coleslaw.png",
+        "categorias": ["Salada", "Vegetariano"]
+    },
+    {
+        "id": 165,
+        "nome": "Risoto de Samambaia",
+        "descricao": "Um prato de arroz cremoso com samambaias salteadas. É meio insosso.",
+        "ingredientes": ["Óleo", "Broto de samambaia", "Alho"],
+        "preco": 225,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/2/2d/Fiddlehead_Risotto.png",
+        "categorias": ["Prato Principal", "Vegetariano"]
+    },
+    {
+        "id": 166,
+        "nome": "Bolinho de Papoula",
+        "descricao": "Possui efeito calmante.",
+        "ingredientes": ["Papoula", "Farinha de trigo", "Açúcar"],
+        "preco": 150,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/8/8e/Poppyseed_Muffin.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 167,
+        "nome": "Sopa de Peixe",
+        "descricao": "Para se esquentar após uma noite fria no mar.",
+        "ingredientes": ["Concha", "Leite"],
+        "preco": 225,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/9/95/Chowder.png",
+        "categorias": ["Sopa", "Prato Principal"]
+    },
+    {
+        "id": 168,
+        "nome": "Guisado de Peixe",
+        "descricao": "Tem cheiro de mar. Mas o gosto é melhor.",
+        "ingredientes": ["Lagostim", "Mexilhão", "Caramujo", "Tomate"],
+        "preco": 225,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/6/6f/Fish_Stew.png",
+        "categorias": ["Prato Principal", "Frutos do Mar"]
+    },
+    {
+        "id": 169,
+        "nome": "Escargô",
+        "descricao": "Lesmas cobertas de manteiga e cozidas com perfeição.",
+        "ingredientes": ["Lesma", "Alho"],
+        "preco": 125,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/7/78/Escargot.png",
+        "categorias": ["Prato Principal"]
+    },
+    {
+        "id": 170,
+        "nome": "Bisque de lagosta",
+        "descricao": "Esta sopa delicada é uma receita secreta de família do Willy.",
+        "ingredientes": ["Lagosta", "Leite"],
+        "preco": 205,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/0/0a/Lobster_Bisque.png",
+        "categorias": ["Sopa", "Frutos do Mar"]
+    },
+    {
+        "id": 171,
+        "nome": "Pão de ácer",
+        "descricao": "Uma rosquinha doce coberta com ácer.",
+        "ingredientes": ["Xarope de ácer", "Açúcar", "Farinha de trigo"],
+        "preco": 300,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/1/18/Maple_Bar.png",
+        "categorias": ["Sobremesa", ""]
+    },
+    {
+        "id": 172,
+        "nome": "Bolinhos de caranguejo",
+        "descricao": "Caranguejo, pão e ovo achatados e fritos até ficarem dourados.",
+        "ingredientes": ["Caranguejo", "Farinha de trigo", "Ovo", "Óleo"],
+        "preco": 275,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/7/70/Crab_Cakes.png",
+        "categorias": ["Prato Principal"]
+    },
+    {
+        "id": 173,
+        "nome": "Coquetel de Camarão",
+        "descricao": "Um aperitivo suntuoso feito com camarão fresco.",
+        "ingredientes": ["Tomate", "Camarão", "Raiz-forte"],
+        "preco": 160,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/8/8e/Shrimp_Cocktail.png",
+        "categorias": ["Frutos do Mar"]
+    },
+    {
+        "id": 174,
+        "nome": "Ginger Ale",
+        "descricao": "Um refrigerante picante conhecido por seus efeitos acalmantes no estômago.",
+        "ingredientes": ["Gengibre", "Açúcar"],
+        "preco": 200,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/1/1a/Ginger_Ale.png",
+        "categorias": ["Bebida"]
+    },
+    {
+        "id": 175,
+        "nome": "Pudim de Banana",
+        "descricao": "Uma sobremesa cremosa com um incrível sabor tropical.",
+        "ingredientes": ["Banana", "Leite", "Açúcar"],
+        "preco": 260,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/4/40/Banana_Pudding.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 176,
+        "nome": "Arroz Doce de Manga",
+        "descricao": "Manga doce e coco tornam este arroz em algo muito especial.",
+        "ingredientes": ["Manga", "Coco", "Arroz"],
+        "preco": 250,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/6/6e/Mango_Sticky_Rice.png",
+        "categorias": ["Sobremesa"]
+    },
+    {
+        "id": 177,
+        "nome": "Poi",
+        "descricao": "Uma comida tradicional com um sabor delicado e doce quando está fresca.",
+        "ingredientes": ["Inhame-coco"],
+        "preco": 400,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/f/f1/Poi.png",
+        "categorias": ["Prato Principal"]
+    },
+    {
+        "id": 178,
+        "nome": "Curry Tropical",
+        "descricao": "Um exótico e aromático curry servido em uma tigela de abacaxi.",
+        "ingredientes": ["Coco", "Abacaxi", "Pimenta quente"],
+        "preco": 500,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/3/32/Tropical_Curry.png",
+        "categorias": ["Prato Principal"]
+    },
+    {
+        "id": 179,
+        "nome": "Ravioli de Tinta de Lula",
+        "descricao": "Temporariamente protege de efeitos negativos.",
+        "ingredientes": ["Tinta de Lula", "Farinha de trigo", "Tomate"],
+        "preco": 150,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/8/86/Squid_Ink_Ravioli.png",
+        "categorias": ["Prato Principal"]
+    },
+    {
+        "id": 180,
+        "nome": "Café",
+        "descricao": "Uma bebida quente e revigorante.",
+        "ingredientes": ["Grão de café"],
+        "preco": 180,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/e/e9/Coffee.png",
+        "categorias": ["Bebida"]
+    },
+    {
+        "id": 181,
+        "nome": "Cerveja",
+        "descricao": "Beba com moderação.",
+        "ingredientes": ["Trigo"],
+        "preco": 400,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/b/b3/Beer.png",
+        "categorias": ["Bebida"]
+    },
+    {
+        "id": 182,
+        "nome": "Joja-Cola",
+        "descricao": "A marca registrada da Corporação Joja.",
+        "preco": 75,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/d/d5/Joja_Cola.png",
+        "categorias": ["Bebida"]
+    },
+    {
+        "id": 183,
+        "nome": "Piña Colada",
+        "descricao": "Beba com moderação.",
+        "preco": 600,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/1/12/Piña_Colada.png",
+        "categorias": ["Bebida"]
+    },
+    {
+        "id": 184,
+        "nome": "Pale Ale",
+        "descricao": "Beba com moderação.",
+        "preco": 1000,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/7/78/Pale_Ale.png",
+        "categorias": ["Bebida"]
+    },
+    {
+        "id": 185,
+        "nome": "Hidromel",
+        "descricao": "Uma bebida fermentada feita com mel. Beba com moderação.",
+        "preco": 800,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/8/84/Mead.png",
+        "categorias": ["Bebida"]
+    },
+    {
+        "id": 186,
+        "nome": "Vinho de Manga",
+        "descricao": "Beba com moderação.",
+        "preco": 5000,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/6/69/Wine.png",
+        "categorias": ["Bebida"]
+    },
+    {
+        "id": 187,
+        "nome": "Suco de Couve",
+        "descricao": "Uma bebida doce e nutritiva.",
+        "preco": 100,
+        "foto": "https://stardewvalleywiki.com/mediawiki/images/f/f1/Juice.png",
+        "categorias": ["Bebida"]
+    }
+]
+  
