@@ -1,12 +1,16 @@
-import React from "react"
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import HomePage from './pages/HomePage'
 
-function App() {
+const App = React.FC = () => {
   return (
-    <>
+    <Router>
       <div>
-        Site Teste
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+        </Routes>
       </div>
-    </>
+    </Router>
   )
 }
 
