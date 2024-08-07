@@ -10,7 +10,7 @@ const Banner = () => {
 
   return (
     <div className="relative max-h-40 w-full p-4 flex items-center justify-center overflow-hidden">
-      <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-10 lg:grid-cols-10 grid-rows-5 animate-scroll">
+      <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 lg:grid-cols-8 grid-rows-5 gap-6 animate-scroll">
         {recipeList.map((recipe, index) => (
           <div key={index} className="flex justify-center items-center">
             <img

@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import Header from "../components/Header"
 import Banner from "../components/Banner"
 import SearchBar from "../components/SearchBar"
@@ -15,7 +16,7 @@ const HomePage = React.FC = () => {
                 <Banner />
                     <div className="p-4 sm:p-8">
                     <SearchBar />
-                    <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                    <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
                         <RestaurantType type="Café da Manhã" />
                         <RestaurantType type="Almoço" />
                         <RestaurantType type="Jantar" />
