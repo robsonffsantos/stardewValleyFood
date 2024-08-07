@@ -1,33 +1,31 @@
-import React, { useEffect, useState} from 'react'
-import table1 from '../assets/table_1.png'
-import table2 from '../assets/table_2.png'
-import table3 from '../assets/table_3.png'
-import table4 from '../assets/table_4.png'
+import React, { useEffect, useState } from 'react';
+import recipes from '../utils/recipes.json';
 
-const images = [table1, table2, table3, table4]
-
-const Banner = React.FC = () => {
-  const [currentImage, setCurrentImage] = useState(0)
+const Banner = () => {
+  const [recipeList, setRecipeList] = useState([]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prevImage) => (prevImage + 1) % images.length)
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [])
+    setRecipeList([...recipes, ...recipes]);
+  }, []);
 
   return (
-    <div className="relative h-56 w-full flex items-center justify-center">
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-40 transition-all duration-500"
-        style={{ backgroundImage: `url(${images[currentImage]})`, display: "block", width: "50%", marginLeft: "auto", marginRight: "auto" }}
-      />
-      <h2 className="relative text-2xl font-semibold text-white bg-black bg-opacity-50 p-2 rounded">
+    <div className="relative max-h-40 w-full p-4 flex items-center justify-center overflow-hidden">
+      <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-10 lg:grid-cols-10 grid-rows-5 animate-scroll">
+        {recipeList.map((recipe, index) => (
+          <div key={index} className="flex justify-center items-center">
+            <img
+              src={recipe.foto}
+              alt={recipe.name}
+              className="w-24 h-24 object-cover"
+            />
+          </div>
+        ))}
+      </div>
+      <h2 className="absolute bottom-4 text-2xl font-semibold text-white bg-black bg-opacity-50 p-2 rounded">
         Sua comida a um clique de distância
       </h2>
     </div>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;
