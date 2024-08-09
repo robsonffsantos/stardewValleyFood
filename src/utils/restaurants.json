@@ -1,6 +1,7 @@
 [
     {
         "id": 1,
+        "image": "https://stardewvalleywiki.com/mediawiki/images/thumb/6/66/Willy_Happy.png/120px-Willy_Happy.png",
         "nome": "Restaurante do Willy",
         "descricao": "Desfrute de uma experiência culinária incomparável com os frutos do mar mais frescos da região, preparados com receitas secretas e acompanhados de uma vista espetacular do oceano.",
         "endereco": "Praia da Vila dos Pelicanos, n° 5",
@@ -14,6 +15,7 @@
     {
         "id": 2,
         "nome": "Sallon Fruta Estelar",
+        "image": "https://stardewvalleywiki.com/mediawiki/images/thumb/e/e0/Saloon_PT.png/109px-Saloon_PT.png",
         "descricao": "Um lugar encantador para todas as refeições do dia, oferecendo uma vasta seleção de pratos frescos e saborosos que vão desde o café da manhã até a janta.",
         "endereco": "Estrada do Rio, 3",
         "horario_abertura": "08:00",
@@ -26,6 +28,7 @@
     {
         "id": 3,
         "nome": "Armazém do Pierre",
+        "image": "https://stardewvalleywiki.com/mediawiki/images/thumb/7/7e/Pierre.png/120px-Pierre.png",
         "descricao": "Um restaurante acolhedor que serve uma variedade de pratos deliciosos e nutritivos, ideal para um café da manhã saudável ou um almoço reconfortante. O lugar perfeito para uma refeição saborosa.",
         "endereco": "Estrada do Rio, 6",
         "horario_abertura": "07:00",
@@ -38,6 +41,7 @@
     {
         "id": 4,
         "nome": "Restaurante Joja",
+        "image": "https://stardewvalleywiki.com/mediawiki/images/thumb/9/90/Morris.png/120px-Morris.png",
         "descricao": "Um restaurante 24 horas que oferece uma vasta gama de pratos para satisfazer todos os gostos a qualquer hora do dia ou da noite. Com uma ampla seleção de receitas e um ambiente acolhedor, o Restaurante Joja é o destino ideal para quem procura uma refeição rápida e deliciosa, a qualquer momento.",
         "endereco": "Rua Além do Rio, 2",
         "horario_abertura": "00:00",
@@ -50,6 +54,7 @@
     {
         "id": 5,
         "nome": "Resort Gengibre",
+        "image": "https://stardewvalleywiki.com/mediawiki/images/thumb/0/0e/Island_Trader.png/120px-Island_Trader.png",
         "descricao": "No Resort Gengibre, oferecemos uma experiência culinária sofisticada . Perfeito para quem busca uma refeição gourmet ou um drink exótico. Com uma ampla gama de receitas e um serviço impecável, nosso resort é o lugar ideal para relaxar e saborear pratos e bebidas de alta qualidade.",
         "endereco": "Rua Principal, 1",
         "horario_abertura": "13:00",
@@ -62,6 +67,7 @@
     {
         "id": 6,
         "nome": "Cálico",
+        "image": "https://stardewvalleywiki.com/mediawiki/images/d/df/Desert_Trader.png",
         "descricao": "O Cálico é um restaurante que oferece uma seleção diversificada de pratos e bebidas a qualquer hora do dia. Localizado no coração do Deserto de Cálico, é o local ideal para quem busca uma refeição saborosa e acessível durante toda a madrugada. Com um cardápio que atende a todos os gostos e um serviço eficiente, o Cálico é a escolha perfeita para qualquer refeição fora do horário convencional.",
         "endereco": "Deserto de Cálico, 3",
         "horario_abertura": "00:00",
