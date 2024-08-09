@@ -6,9 +6,19 @@ import Card from "../components/Card"
 import Footer from "../components/Footer"
 import PromoBanner from "../components/PromoBanner"
 import RestaurantType from "../components/RestaurantType"
+import Modal from "../components/Modal"
 
 const HomePage = React.FC = () => {
     const [randomRecipeId, setRandomRecipeId] = useState(null)
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleOpenModal = () => {
+        setIsModalOpen(true)
+    }
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false)
+    }
 
     useEffect(() => {
         setRandomRecipeId(Math.floor(Math.random() * 80) + 101);
@@ -35,8 +45,14 @@ const HomePage = React.FC = () => {
                             </Link>
                         </div>
                     </div>
-                <PromoBanner />
+                <PromoBanner onClick={handleOpenModal}/>
             <Footer />
+
+            <Modal isOpen={isModalOpen} onRequestClose={handleCloseModal}>
+                <h2 className="text-xl font-bold mb-4">Créditos</h2>
+                <p>Conteúdo do pop-up aqui...</p>
+                <button onClick={handleCloseModal} className="mt-4 p-2 bg-blue-500 text-white rounded">Fechar</button>
+            </Modal>
         </div>
     )
 }
