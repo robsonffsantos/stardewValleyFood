@@ -1,20 +1,27 @@
-import React, { createContext, useState, useContext } from 'react'
+import React, { createContext, useState, useContext, useEffect } from 'react'
+import restaurantsData from '../utils/restaurants.json'
+import recipesData from '../utils/recipes.json'
 
-const GlobalContext = createContext();
+const GlobalContext = createContext()
 
 export const GlobalProvider = ({ children }) => {
-  const [restaurantes, setRestaurantes] = useState([])
-  const [receitas, setReceitas] = useState([])
+  const [restaurants, setRestaurants] = useState([])
+  const [recipes, setRecipes] = useState([])
+
+  useEffect(() => {
+    setRestaurants(restaurantsData)
+    setReceitas(recipesData)
+  }, [])
 
   return (
-    <GlobalContext.Provider value={{ restaurantes, receitas, setRestaurantes, setReceitas }}>
+    <GlobalContext.Provider value={{ restaurants, recipes, setRestaurants, setRecipes }}>
       {children}
     </GlobalContext.Provider>
   )
 }
 
 export const useGlobalContext = () => {
-  const context = useContext(GlobalContext);
+  const context = useContext(GlobalContext)
   if (!context) {
     throw new Error('useGlobalContext must be used within a GlobalProvider')
   }
