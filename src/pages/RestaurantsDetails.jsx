@@ -44,6 +44,14 @@ const RestaurantDetails = () => {
     addToCart(recipeId, newQuantity);
   };
 
+  const handleBuyClick = (recipeId) => {
+    // Assumindo que você queira adicionar o item ao carrinho com a quantidade atual
+    const cartItems = getCartItems();
+    const recipeInCart = cartItems.find(item => item.recipeId === recipeId);
+    const currentQuantity = recipeInCart ? recipeInCart.quantity : 0;
+    addToCart(recipeId, currentQuantity);
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -91,6 +99,7 @@ const RestaurantDetails = () => {
                     -
                   </button>
                   <button
+                    onClick={() => handleBuyClick(recipe.id)}
                     className="bg-blue-500 text-white p-2 w-full border border-blue-500"
                   >
                     Comprar
@@ -113,3 +122,4 @@ const RestaurantDetails = () => {
 };
 
 export default RestaurantDetails;
+

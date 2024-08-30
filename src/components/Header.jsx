@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { useAuth } from "../context/LoginContext"
 import { useGlobalContext } from "../context/GlobalContext"
 import farmerImage from "../assets/farmer.png"
+import cartIcon from "../assets/cartIcon.png"
 
 const Header = () => {
   const { user } = useAuth()
@@ -19,23 +20,28 @@ const Header = () => {
         <div className="flex items-center">
           {user ? (
             <>
-              <Link to='/cart'>
-                <div className="relative flex items-center cursor-pointer">
-                  <img
-                    src={farmerImage}
-                    alt="Usuário"
-                    className="w-8 h-8 rounded-full mr-2 bg-white"
-                  />
-                  {totalItems > 0 && (
-                    <div className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">
-                      {totalItems}
-                    </div>
-                  )}
-                  <div className="ml-2">
-                    <div className="mr-4">{user.name}</div>
-                    <div className="mr-4">Saldo: {user.balance} ouros</div>
-                  </div>
+              <Link to="/profile" className="flex items-center">
+                <img
+                  src={farmerImage}
+                  alt="Usuário"
+                  className="w-8 h-8 rounded-full mr-2 bg-white"
+                />
+                <div className="ml-2">
+                  <div className="mr-4">{user.name}</div>
+                  <div className="mr-4">Saldo: {user.balance} ouros</div>
                 </div>
+              </Link>
+              <Link to="/cart" className="relative flex items-center ml-4">
+                <img
+                  src={cartIcon}
+                  alt="Carrinho"
+                  className="w-8 h-8"
+                />
+                {totalItems > 0 && (
+                  <div className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                    {totalItems}
+                  </div>
+                )}
               </Link>
             </>
           ) : (
@@ -58,4 +64,3 @@ const Header = () => {
 }
 
 export default Header
-
