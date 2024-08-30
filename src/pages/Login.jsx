@@ -19,7 +19,7 @@ const Login = () => {
   const handleSubmit = (values, { setSubmitting, setErrors }) => {
     const success = login(values.email, values.password)
     if (success) {
-      navigate("/")
+      navigate("/profile")
     } else {
       setErrors({ email: "Email ou senha incorretos" })
     }

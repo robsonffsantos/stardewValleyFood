@@ -8,6 +8,7 @@ import Restaurants from './pages/Restaurants'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import RestaurantDetails from './pages/RestaurantsDetails'
+import Profile from './pages/Profile'
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route path="/restaurant/:id" element={<RestaurantDetails />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </Router>
