@@ -22,11 +22,11 @@ const HomePage = () => {
         const currentTime = new Date().getTime()
 
         if (user) {
-            if (lastClick && currentTime - lastClick < 3600000) { // 1 hora em milissegundos
+            if (lastClick && currentTime - lastClick < 3600000) {
                 setModalMessage("Você já resgatou seu bônus hoje.")
             } else {
                 setModalMessage("Você ganhou 5000 ouros! Aqui estão nossos restaurantes para você aproveitar seus créditos!")
-                updateBalance(5000) // Adiciona 5000 ouros ao saldo do usuário
+                updateBalance(5000)
                 localStorage.setItem('lastPromoClick', currentTime)
             }
         } else {
@@ -50,14 +50,14 @@ const HomePage = () => {
             <Header />
                 <div className="flex-grow">
                 <Banner />
-                    <div className="mt-8 p-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+                    <div className="mt-8 p-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
                         <RestaurantType type="Café da Manhã" />
                         <RestaurantType type="Almoço" />
                         <RestaurantType type="Jantar" />
                         <RestaurantType type="24 H" />
                         <RestaurantType type="Bar" />
                     </div>
-                        <div className="mt-10 mb-10 flex flex-col items-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-8 justify-center align-items">
+                        <div className="mt-4 mb-4 p-4 flex flex-col items-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-8 justify-center align-items">
                             <Link to="/restaurants">
                                 <Card title="Restaurantes"/>
                             </Link>

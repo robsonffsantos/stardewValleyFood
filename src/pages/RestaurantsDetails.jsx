@@ -60,11 +60,10 @@ const RestaurantDetails = () => {
             <p className="text-lg font-bold text-blue-600 mb-4">R$ {recipe.preco}</p>
             <div className="flex items-center justify-between mt-auto">
               <button className="bg-gray-200 text-gray-700 p-2 rounded-l-lg border border-gray-400">-</button>
-              <button className="bg-blue-500 text-white p-2 rounded-r-lg w-full border border-blue-500">Comprar</button>
+              <button className="bg-blue-500 text-white p-2 w-full border border-blue-500">Comprar</button>
               <button className="bg-gray-200 text-gray-700 p-2 rounded-r-lg border border-gray-400">+</button>
             </div>
-          </div>
-          
+          </div>          
           ))}
         </div>
       </div>
