@@ -7,10 +7,11 @@ import Footer from "../components/Footer"
 import PromoBanner from "../components/PromoBanner"
 import RestaurantType from "../components/RestaurantType"
 import Modal from "../components/Modal"
+import { useAuth } from '../context/LoginContext'
 
 const HomePage = React.FC = () => {
     const [randomRecipeId, setRandomRecipeId] = useState(null)
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     const handleOpenModal = () => {
         setIsModalOpen(true)
@@ -21,7 +22,7 @@ const HomePage = React.FC = () => {
     }
 
     useEffect(() => {
-        setRandomRecipeId(Math.floor(Math.random() * 80) + 101);
+        setRandomRecipeId(Math.floor(Math.random() * 80) + 101)
       }, [])
 
     return (

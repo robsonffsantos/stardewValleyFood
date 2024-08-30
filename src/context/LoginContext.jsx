@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 const AuthContext = createContext()
 
 export const useAuth = () => {
-  const context = useContext(AuthContext);
+  const context = useContext(AuthContext)
   if (!context) {
     throw new Error('useAuth must be used within an AuthProvider')
   }
@@ -33,12 +33,26 @@ export const AuthProvider = ({ children }) => {
   }
 
   const logout = () => {
-    setUser(null);
+    setUser(null)
     localStorage.removeItem('user')
   }
 
+  const updateBalance = (amount) => {
+    if (user) {
+      const updatedUser = { ...user, balance: (user.balance || 0) + amount }
+      setUser(updatedUser)
+      localStorage.setItem('user', JSON.stringify(updatedUser))
+    }
+  }
+
+  const register = (name, email, password) => {
+    const newUser = { name, email, password, balance: 0 }
+    setUser(newUser)
+    localStorage.setItem('user', JSON.stringify(newUser))
+  }
+
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, updateBalance, register }}>
       {children}
     </AuthContext.Provider>
   )

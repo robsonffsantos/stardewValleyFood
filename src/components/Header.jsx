@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { useAuth } from "../context/LoginContext"
+import farmerImage from "../assets/farmer.png" // Importe a imagem aqui
 
 const Header = () => {
   const { user } = useAuth()
@@ -16,7 +17,7 @@ const Header = () => {
             <div className="flex items-center">
               <img src={farmerImage} alt="Usuário" className="w-8 h-8 rounded-full mr-2" />
               <span className="mr-4">{user.name}</span>
-              <span className="mr-4">Saldo: R$ {user.saldo}</span>
+              <span className="mr-4">Saldo: R$ {user.balance}</span>
               <Link to="/profile">
                 <button className="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-200">
                   Perfil
@@ -43,3 +44,4 @@ const Header = () => {
 }
 
 export default Header
+
