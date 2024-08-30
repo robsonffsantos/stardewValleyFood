@@ -9,6 +9,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import RestaurantDetails from './pages/RestaurantsDetails'
 import Profile from './pages/Profile'
+import ProtectedRoute from './components/ProtectedRoute'
 
 const App = () => {
   return (
@@ -23,7 +24,7 @@ const App = () => {
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route path="/restaurant/:id" element={<RestaurantDetails />} />
-          <Route path="/profile" element={<Profile />} />
+          <ProtectedRoute path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </Router>
