@@ -8,11 +8,19 @@ const PromoBanner = ({ onClick }) => {
 
   const handlePromoClick = () => {
     if (user) {
-      updateBalance(5000)
+      const lastClick = localStorage.getItem('lastPromoClick')
+      const currentTime = new Date().getTime()
+
+      if (lastClick && currentTime - lastClick < 3600000) { 
+        onClick("Você já resgatou seu bônus hoje.")
+      } else {
+        updateBalance(5000)
+        localStorage.setItem('lastPromoClick', currentTime)
+        onClick("Você ganhou 5000 ouros! Aqui estão nossos restaurantes para você aproveitar seus créditos!")
+      }
     } else {
       navigate("/register")
     }
-    onClick()
   }
 
   return (
@@ -25,3 +33,4 @@ const PromoBanner = ({ onClick }) => {
 }
 
 export default PromoBanner
+

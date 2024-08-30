@@ -14,11 +14,25 @@ const HomePage = () => {
     const [randomRecipeId, setRandomRecipeId] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [modalMessage, setModalMessage] = useState("")
-    const { user } = useAuth()
+    const { user, updateBalance } = useAuth()
     const navigate = useNavigate()
 
     const handleOpenModal = () => {
-        setModalMessage("Você ganhou 5000 ouros! Aqui estão nossos restaurantes para você aproveitar seus créditos!")
+        const lastClick = localStorage.getItem('lastPromoClick')
+        const currentTime = new Date().getTime()
+
+        if (user) {
+            if (lastClick && currentTime - lastClick < 3600000) { // 1 hora em milissegundos
+                setModalMessage("Você já resgatou seu bônus hoje.")
+            } else {
+                setModalMessage("Você ganhou 5000 ouros! Aqui estão nossos restaurantes para você aproveitar seus créditos!")
+                updateBalance(5000) // Adiciona 5000 ouros ao saldo do usuário
+                localStorage.setItem('lastPromoClick', currentTime)
+            }
+        } else {
+            setModalMessage("Por favor, faça login para ganhar 5000 ouros.")
+        }
+
         setIsModalOpen(true)
     }
 
