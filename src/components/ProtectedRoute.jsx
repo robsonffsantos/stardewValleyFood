@@ -1,22 +1,11 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { useAuth } from '../context/LoginContext'
 
-const ProtectedRoute = ({ component: Component, ...rest }) => {
+const ProtectedRoute = ({ element: Element }) => {
   const { user } = useAuth()
 
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        user ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to="/login" />
-        )
-      }
-    />
-  )
+  return user ? <Element /> : <Navigate to="/login" />
 }
 
 export default ProtectedRoute
