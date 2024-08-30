@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined)
+const AuthContext = createContext()
 
 export const useAuth = () => {
-  const context = useContext(AuthContext)
+  const context = useContext(AuthContext);
   if (!context) {
     throw new Error('useAuth must be used within an AuthProvider')
   }
@@ -11,7 +11,7 @@ export const useAuth = () => {
 }
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState<{ name: string, email: string } | null>(null)
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user')
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
   const login = (email, password) => {
     const storedUser = localStorage.getItem('user')
     if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
+      const parsedUser = JSON.parse(storedUser)
       if (parsedUser.email === email && parsedUser.password === password) {
         setUser(parsedUser)
         return true
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   const logout = () => {
-    setUser(null)
+    setUser(null);
     localStorage.removeItem('user')
   }
 
