@@ -1,10 +1,14 @@
 import React from "react"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Footer from "../components/Footer"
+import { useAuth } from "../context/LoginContext"
 
 const Login = () => {
+  const { login } = useAuth()
+  const navigate = useNavigate()
+
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Email inválido").required("Obrigatório"),
     password: Yup.string()
@@ -12,8 +16,14 @@ const Login = () => {
       .required("Obrigatório"),
   })
 
-  const handleSubmit = (values) => {
-
+  const handleSubmit = (values, { setSubmitting, setErrors }) => {
+    const success = login(values.email, values.password)
+    if (success) {
+      navigate("/")
+    } else {
+      setErrors({ email: "Email ou senha incorretos" })
+    }
+    setSubmitting(false)
   }
 
   return (
@@ -28,7 +38,9 @@ const Login = () => {
             {({ isSubmitting }) => (
               <Form className="bg-white shadow-md rounded px-8 pt-8 pb-8 mb-4">
                 <Link to="/">
-                    <h2 className="text-2xl hover:bg-blue-700 mb-4 text-center rounded bg-blue-500 text-white p-4">Stardew Valley Food</h2>
+                  <h2 className="text-2xl hover:bg-blue-700 mb-4 text-center rounded bg-blue-500 text-white p-4">
+                    Stardew Valley Food
+                  </h2>
                 </Link>
                 <h2 className="text-2xl text-center rounded p-6">Login</h2>
                 <div className="mb-4">
@@ -64,8 +76,8 @@ const Login = () => {
                     Entrar
                   </button>
                   <p>ou</p>
-                  <Link to ="/register">
-                    <a className="hover:underline">Registre-se</a>
+                  <Link to="/register">
+                    <span className="hover:underline">Registre-se</span>
                   </Link>
                 </div>
               </Form>
@@ -79,3 +91,4 @@ const Login = () => {
 }
 
 export default Login
+
