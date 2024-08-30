@@ -14,16 +14,15 @@ const Header = () => {
         </Link>
         <div>
           {user ? (
-            <div className="flex items-center">
-              <img src={farmerImage} alt="Usuário" className="w-8 h-8 rounded-full mr-2" />
-              <span className="mr-4">{user.name}</span>
-              <span className="mr-4">Saldo: R$ {user.balance}</span>
-              <Link to="/profile">
-                <button className="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-200">
-                  Perfil
-                </button>
+            <Link to='/profile'>
+            <div className="flex items-center">              
+                <img src={farmerImage} alt="Usuário" className="w-8 h-8 rounded-full mr-2 bg-white" />
+                <div>
+                  <div className="mr-4">{user.name}</div>
+                  <div className="mr-4">Saldo: {user.balance} ouros</div>
+                </div>              
+              </div>
               </Link>
-            </div>
           ) : (
             <>
               <Link to="/login">

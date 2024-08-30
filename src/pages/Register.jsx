@@ -3,9 +3,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { Link, useNavigate } from 'react-router-dom'
 import Footer from '../components/Footer'
+import { useAuth } from '../context/LoginContext'
 
 const Register = () => {
   const navigate = useNavigate()
+  const { register } = useAuth()
 
   const validationSchema = Yup.object({
     name: Yup.string().required('Nome é obrigatório'),
@@ -19,7 +21,7 @@ const Register = () => {
   })
 
   const handleSubmit = (values, { setSubmitting }) => {
-    localStorage.setItem('user', JSON.stringify(values))
+    register(values.name, values.email, values.password)
     setSubmitting(false)
     navigate('/login')
   }

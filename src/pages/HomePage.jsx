@@ -8,22 +8,28 @@ import PromoBanner from "../components/PromoBanner"
 import RestaurantType from "../components/RestaurantType"
 import Modal from "../components/Modal"
 import { useAuth } from '../context/LoginContext'
+import { useNavigate } from "react-router-dom"
 
-const HomePage = React.FC = () => {
+const HomePage = () => {
     const [randomRecipeId, setRandomRecipeId] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [modalMessage, setModalMessage] = useState("")
+    const { user } = useAuth()
+    const navigate = useNavigate()
 
     const handleOpenModal = () => {
+        setModalMessage("Você ganhou 5000 ouros! Aqui estão nossos restaurantes para você aproveitar seus créditos!")
         setIsModalOpen(true)
     }
 
     const handleCloseModal = () => {
+        navigate("/restaurants")
         setIsModalOpen(false)
     }
 
     useEffect(() => {
         setRandomRecipeId(Math.floor(Math.random() * 80) + 101)
-      }, [])
+    }, [])
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -50,9 +56,9 @@ const HomePage = React.FC = () => {
             <Footer />
 
             <Modal isOpen={isModalOpen} onRequestClose={handleCloseModal}>
-                <h2 className="text-xl font-bold mb-4">Créditos</h2>
-                <p>Conteúdo do pop-up aqui...</p>
-                <button onClick={handleCloseModal} className="mt-4 p-2 bg-blue-500 text-white rounded">Fechar</button>
+                <h2 className="text-xl font-bold mb-4">Sucesso</h2>
+                <p>{modalMessage}</p>
+                <button onClick={handleCloseModal} className="mt-4 p-2 bg-blue-500 text-white rounded">Ver restaurantes</button>
             </Modal>
         </div>
     )
