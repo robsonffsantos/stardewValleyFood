@@ -26,6 +26,11 @@ const Profile = () => {
                 <img src={farmerImage} alt="Usuário" className="w-32 h-32 rounded-full mx-auto mb-4" />
                     <h2 className="text-2xl font-bold text-center mb-2">{user.name}</h2>
                     <p className="text-center text-lg text-gray-700">Saldo: R$ {user.saldo}</p>
+                <Link to="/restaurants">
+                    <h2 className="text-2xl hover:bg-blue-700 mt-4 text-center rounded bg-blue-500 text-white p-4">
+                        Ver restaurantes
+                    </h2>
+                </Link>
             </div>
             </div>
         </div>
