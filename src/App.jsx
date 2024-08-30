@@ -7,6 +7,7 @@ import Recipes from './pages/Recipes'
 import Restaurants from './pages/Restaurants'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import RestaurantDetails from './pages/RestaurantsDetails'
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path='/recipes' element={<Recipes />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
+          <Route path="/restaurant/:id" element={<RestaurantDetails />} />
         </Routes>
       </div>
     </Router>

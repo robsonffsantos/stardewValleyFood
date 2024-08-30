@@ -24,7 +24,7 @@
         "ingredientes": ["Alho-poró", "Dente-de-leão", "Vinagre"],
         "preco": 110,
         "foto": "https://stardewvalleywiki.com/mediawiki/images/7/7e/Salad.png",
-        "categorias": ["Acompanhamento", "Vegetariano", "Salada"]
+        "categorias": ["Vegetariano", "Salada"]
     },
     {
         "id": 103,
@@ -39,7 +39,7 @@
         "id": 104,
         "nome": "Peixe cozido",
         "descricao": "Peixe cozido em uma cama de ervas.",
-        "ingredientes": ["Peixe-sol", "Brema", "Farinha de trigo"],
+        "ingredientes": ["Peixe-sol", "Farinha de trigo"],
         "preco": 100,
         "foto": "https://stardewvalleywiki.com/mediawiki/images/9/94/Baked_Fish.png",
         "categorias": ["Prato Principal", "Peixe"]
