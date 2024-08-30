@@ -9,6 +9,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import RestaurantDetails from './pages/RestaurantsDetails'
 import Profile from './pages/Profile'
+import Cart from './components/Cart'
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path='/contact' element={<Contact />} />
           <Route path="/restaurant/:id" element={<RestaurantDetails />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="cart" element={<Cart />} />
         </Routes>
       </div>
     </Router>
