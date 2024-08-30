@@ -44,35 +44,35 @@ const Register = () => {
                 </Link>
                 <h2 className="text-2xl text-center rounded p-6">Registrar</h2>
                 <div className="mb-4">
-                  <label htmlFor="name" className="block text-gray-700">
+                  <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
                     Nome
                   </label>
                   <Field
                     name="name"
                     type="text"
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
                   />
                   <ErrorMessage name="name" component="div" className="text-red-500 text-sm mt-1" />
                 </div>
                 <div className="mb-4">
-                  <label htmlFor="email" className="block text-gray-700">
+                  <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
                     Email
                   </label>
                   <Field
                     name="email"
                     type="email"
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
                   />
                   <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
                 </div>
                 <div className="mb-4">
-                  <label htmlFor="password" className="block text-gray-700">
+                  <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">
                     Senha
                   </label>
                   <Field
                     name="password"
                     type="password"
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
                   />
                   <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
                 </div>
