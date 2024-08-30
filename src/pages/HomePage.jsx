@@ -50,11 +50,12 @@ const HomePage = () => {
             <Header />
                 <div className="flex-grow">
                 <Banner />
-                    <div className="mt-8 p-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+                <h4 className="text-3xl font-semibold mt-6 text-center">O que você procura?</h4>
+                    <div className="mt-2 p-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
                         <RestaurantType type="Café da Manhã" />
                         <RestaurantType type="Almoço" />
                         <RestaurantType type="Jantar" />
-                        <RestaurantType type="24 H" />
+                        <RestaurantType type="24h" />
                         <RestaurantType type="Bar" />
                     </div>
                         <div className="mt-4 mb-4 p-4 flex flex-col items-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-8 justify-center align-items">
@@ -70,7 +71,7 @@ const HomePage = () => {
             <Footer />
 
             <Modal isOpen={isModalOpen} onRequestClose={handleCloseModal}>
-                <h2 className="text-xl font-bold mb-4">Sucesso</h2>
+                <h2 className="text-xl font-bold mb-4">Atenção:</h2>
                 <p>{modalMessage}</p>
                 <button onClick={handleCloseModal} className="mt-4 p-2 bg-blue-500 text-white rounded">Ver restaurantes</button>
             </Modal>
