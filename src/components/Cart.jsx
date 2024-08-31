@@ -4,12 +4,22 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 const Cart = () => {
-  const { getCartItems, recipes } = useGlobalContext()
+  const { getCartItems, recipes, restaurants } = useGlobalContext()
   const cartItems = getCartItems()
 
   const getRecipeDetails = (recipeId) => {
     return recipes.find(recipe => recipe.id === recipeId)
   }
+
+  const getRestaurantDetails = (recipeId) => {
+    const recipe = getRecipeDetails(recipeId)
+    return restaurants.find(restaurant => restaurant.receitas.includes(recipeId))
+  }
+
+  const totalPrice = cartItems.reduce((total, { recipeId, quantity }) => {
+    const recipe = getRecipeDetails(recipeId)
+    return total + (recipe.preco * quantity)
+  }, 0)
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -21,27 +31,21 @@ const Cart = () => {
             <div>
               {cartItems.map(({ recipeId, quantity }) => {
                 const recipe = getRecipeDetails(recipeId)
-                if (!recipe) {
-                  return (
-                    <div key={recipeId} className="flex items-center justify-between mb-4 p-4 border-b">
-                      <div>
-                        <h3 className="text-lg font-semibold text-red-600">Item não encontrado</h3>
-                        <p className="text-gray-700">Quantidade: {quantity}</p>
-                      </div>
-                    </div>
-                  )
-                }
+                const restaurant = getRestaurantDetails(recipeId)
                 return (
                   <div key={recipeId} className="flex items-center justify-between mb-4 p-4 border-b">
-                    <div>
+                    <img src={recipe.foto} alt={recipe.nome} className="w-16 h-16 object-contain mr-4" />
+                    <div className="flex-grow">
                       <h3 className="text-lg font-semibold">{recipe.nome}</h3>
                       <p className="text-gray-700">Quantidade: {quantity}</p>
-                      <p className="text-lg font-bold text-blue-600">R$ {recipe.preco * quantity}</p>
+                      <p className="text-lg font-bold text-blue-600">{recipe.preco * quantity} ouros</p>
+                      <p className="text-sm text-gray-500">Restaurante: {restaurant.nome}</p>
                     </div>
                   </div>
                 )
               })}
-              <div className="text-center mt-4">
+              <div className="flex justify-between items-center mt-4">
+                <p className="text-lg font-bold text-blue-600">Total: {totalPrice} ouros </p>
                 <button className="bg-blue-500 text-white py-2 px-4 rounded">Finalizar Compra</button>
               </div>
             </div>
