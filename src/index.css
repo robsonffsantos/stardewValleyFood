@@ -4,15 +4,15 @@
 
 @keyframes scroll {
     0% {
-      transform: translateY(0);
+      transform: translateY(0)
     }
     100% {
-      transform: translateY(-50%);
+      transform: translateY(-50%)
     }
 }
   
     .scroll {
-        animation: scroll 60s linear infinite;
+        animation: scroll 5s linear infinite
 }
 
 .modal {

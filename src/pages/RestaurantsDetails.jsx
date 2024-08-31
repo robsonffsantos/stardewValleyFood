@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useGlobalContext } from '../context/GlobalContext';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { useGlobalContext } from '../context/GlobalContext'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const RestaurantDetails = () => {
-  const { id } = useParams();
-  const { restaurants, recipes, addToCart, getCartItems } = useGlobalContext();
-  const restaurant = restaurants.find(rest => rest.id === parseInt(id));
+  const { id } = useParams()
+  const { restaurants, recipes, addToCart, getCartItems } = useGlobalContext()
+  const restaurant = restaurants.find(rest => rest.id === parseInt(id))
 
   if (!restaurant) {
     return (
@@ -18,39 +18,38 @@ const RestaurantDetails = () => {
         </div>
         <Footer />
       </div>
-    );
+    )
   }
 
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([])
 
   const filteredRecipes = recipes.filter(recipe =>
     restaurant.receitas.includes(recipe.id) &&
     (selectedCategories.length === 0 || selectedCategories.some(category => recipe.categorias.includes(category)))
-  );
+  )
 
   const toggleCategory = (category) => {
     setSelectedCategories(prevSelected =>
       prevSelected.includes(category)
         ? prevSelected.filter(cat => cat !== category)
         : [...prevSelected, category]
-    );
-  };
+    )
+  }
 
   const handleQuantityChange = (recipeId, increment) => {
-    const cartItems = getCartItems();
-    const recipeInCart = cartItems.find(item => item.recipeId === recipeId);
-    const currentQuantity = recipeInCart ? recipeInCart.quantity : 0;
-    const newQuantity = increment ? currentQuantity + 1 : Math.max(currentQuantity - 1, 0);
-    addToCart(recipeId, newQuantity);
-  };
+    const cartItems = getCartItems()
+    const recipeInCart = cartItems.find(item => item.recipeId === recipeId)
+    const currentQuantity = recipeInCart ? recipeInCart.quantity : 0
+    const newQuantity = increment ? currentQuantity + 1 : Math.max(currentQuantity - 1, 0)
+    addToCart(recipeId, newQuantity)
+  }
 
   const handleBuyClick = (recipeId) => {
-    // Assumindo que você queira adicionar o item ao carrinho com a quantidade atual
-    const cartItems = getCartItems();
-    const recipeInCart = cartItems.find(item => item.recipeId === recipeId);
-    const currentQuantity = recipeInCart ? recipeInCart.quantity : 0;
-    addToCart(recipeId, currentQuantity);
-  };
+    const cartItems = getCartItems()
+    const recipeInCart = cartItems.find(item => item.recipeId === recipeId)
+    const currentQuantity = recipeInCart ? recipeInCart.quantity : 0
+    addToCart(recipeId, currentQuantity)
+  }
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -79,9 +78,9 @@ const RestaurantDetails = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredRecipes.map(recipe => {
-            const cartItems = getCartItems();
-            const recipeInCart = cartItems.find(item => item.recipeId === recipe.id);
-            const quantity = recipeInCart ? recipeInCart.quantity : 0;
+            const cartItems = getCartItems()
+            const recipeInCart = cartItems.find(item => item.recipeId === recipe.id)
+            const quantity = recipeInCart ? recipeInCart.quantity : 0
 
             return (
               <div key={recipe.id} className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between h-full">
@@ -112,14 +111,13 @@ const RestaurantDetails = () => {
                   </button>
                 </div>
               </div>
-            );
+            )
           })}
         </div>
       </div>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default RestaurantDetails;
-
+export default RestaurantDetails

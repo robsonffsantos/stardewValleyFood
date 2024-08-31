@@ -4,11 +4,11 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 const Cart = () => {
-  const { getCartItems, recipes } = useGlobalContext();
-  const cartItems = getCartItems();
+  const { getCartItems, recipes } = useGlobalContext()
+  const cartItems = getCartItems()
 
   const getRecipeDetails = (recipeId) => {
-    return recipes.find(recipe => recipe.id === recipeId);
+    return recipes.find(recipe => recipe.id === recipeId)
   }
 
   return (
@@ -20,7 +20,7 @@ const Cart = () => {
           {cartItems.length > 0 ? (
             <div>
               {cartItems.map(({ recipeId, quantity }) => {
-                const recipe = getRecipeDetails(recipeId);
+                const recipe = getRecipeDetails(recipeId)
                 return (
                   <div key={recipeId} className="flex items-center justify-between mb-4 p-4 border-b">
                     <div>
