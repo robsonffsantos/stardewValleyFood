@@ -1,10 +1,15 @@
 import React from 'react'
 import { useGlobalContext } from '../context/GlobalContext'
+import { useAuth } from '../context/LoginContext'
+import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 const Cart = () => {
-  const { getCartItems, recipes, restaurants } = useGlobalContext()
+  const { getCartItems, recipes, restaurants, clearCart } = useGlobalContext()
+  const { user, updateBalance } = useAuth()
+  const navigate = useNavigate()
+
   const cartItems = getCartItems()
 
   const getRecipeDetails = (recipeId) => {
@@ -20,6 +25,17 @@ const Cart = () => {
     const recipe = getRecipeDetails(recipeId)
     return total + (recipe.preco * quantity)
   }, 0)
+
+  const handleCheckout = () => {
+    if (user && user.balance >= totalPrice) {
+      updateBalance(-totalPrice)
+      clearCart()
+      alert('Compra finalizada! Sua comida está a caminho.')
+      navigate('/')
+    } else {
+      alert('Saldo insuficiente para finalizar a compra.')
+    }
+  }
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -45,8 +61,13 @@ const Cart = () => {
                 )
               })}
               <div className="flex justify-between items-center mt-4">
-                <p className="text-lg font-bold text-blue-600">Total: {totalPrice} ouros </p>
-                <button className="bg-blue-500 text-white py-2 px-4 rounded">Finalizar Compra</button>
+                <p className="text-lg font-bold text-blue-600">Total: {totalPrice} ouros</p>
+                <button 
+                  onClick={handleCheckout}
+                  className="bg-blue-500 text-white py-2 px-4 rounded"
+                >
+                  Finalizar Compra
+                </button>
               </div>
             </div>
           ) : (

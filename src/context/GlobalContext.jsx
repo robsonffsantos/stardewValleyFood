@@ -33,6 +33,10 @@ export const GlobalProvider = ({ children }) => {
     }))
   }
 
+  const clearCart = () => {
+    setCart({})
+  }  
+
   return (
     <GlobalContext.Provider value={{
       restaurants,

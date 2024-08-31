@@ -1,12 +1,11 @@
 import React from 'react'
 import { useAuth } from '../context/LoginContext'
 import farmerImage from '../assets/farmer.png'
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Footer from "../components/Footer"
 
 const Profile = () => {
   const { user } = useAuth()
-  const navigate = useNavigate()
 
   if (!user) {
     return <div className="text-center">Por favor, faça login para ver seu perfil.</div>
