@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useGlobalContext } from '../context/GlobalContext'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import Modal from '../components/Modal'
 
 const RestaurantDetails = () => {
   const { id } = useParams()
@@ -22,6 +23,9 @@ const RestaurantDetails = () => {
   }
 
   const [selectedCategories, setSelectedCategories] = useState([])
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedRecipe, setSelectedRecipe] = useState(null)
+  const [quantity, setQuantity] = useState(1)
 
   const filteredRecipes = recipes.filter(recipe =>
     restaurant.receitas.includes(recipe.id) &&
@@ -36,20 +40,26 @@ const RestaurantDetails = () => {
     )
   }
 
-  const handleQuantityChange = (recipeId, increment) => {
-    const cartItems = getCartItems()
-    const recipeInCart = cartItems.find(item => item.recipeId === recipeId)
-    const currentQuantity = recipeInCart ? recipeInCart.quantity : 0
-    const newQuantity = increment ? currentQuantity + 1 : Math.max(currentQuantity - 1, 0)
-    addToCart(recipeId, newQuantity)
+  const handleQuantityChange = (change) => {
+    const newQuantity = Math.max(quantity + change, 0)
+    setQuantity(newQuantity)
+    if (newQuantity === 0) {
+      setIsModalOpen(false)
+    }
+  }  
+
+  const handleBuyClick = (recipe) => {
+    setSelectedRecipe(recipe)
+    setQuantity(1)
+    setIsModalOpen(true)
   }
 
-  const handleBuyClick = (recipeId) => {
-    const cartItems = getCartItems()
-    const recipeInCart = cartItems.find(item => item.recipeId === recipeId)
-    const currentQuantity = recipeInCart ? recipeInCart.quantity : 0
-    addToCart(recipeId, currentQuantity)
-  }
+  const handleAddToCart = () => {
+    if (quantity > 0) {
+      addToCart(selectedRecipe.id, quantity)
+      setIsModalOpen(false)
+    }
+  }  
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -77,45 +87,63 @@ const RestaurantDetails = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {filteredRecipes.map(recipe => {
-            const cartItems = getCartItems()
-            const recipeInCart = cartItems.find(item => item.recipeId === recipe.id)
-            const quantity = recipeInCart ? recipeInCart.quantity : 0
-
-            return (
-              <div key={recipe.id} className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between h-full">
-                <img src={recipe.foto} alt={recipe.nome} className="w-full h-24 object-contain rounded-lg mb-4" />
-                <h3 className="text-lg font-semibold mb-2">{recipe.nome}</h3>
-                <p className="text-gray-700 mb-4">{recipe.descricao}</p>
-                <p className="text-gray-700 mb-2">Ingredientes: {Array.isArray(recipe.ingredientes) ? recipe.ingredientes.join(', ') : 'Não disponível'}</p>
-                <p className="text-lg font-bold text-blue-600 mb-4">R$ {recipe.preco}</p>
-                <div className="flex items-center justify-between mt-auto">
-                  <button
-                    onClick={() => handleQuantityChange(recipe.id, false)}
-                    className="bg-gray-200 text-gray-700 p-2 rounded-l-lg border border-gray-400"
-                    disabled={quantity === 0}
-                  >
-                    -
-                  </button>
-                  <button
-                    onClick={() => handleBuyClick(recipe.id)}
-                    className="bg-blue-500 text-white p-2 w-full border border-blue-500"
-                  >
-                    Comprar
-                  </button>
-                  <button
-                    onClick={() => handleQuantityChange(recipe.id, true)}
-                    className="bg-gray-200 text-gray-700 p-2 rounded-r-lg border border-gray-400"
-                  >
-                    +
-                  </button>
-                </div>
+          {filteredRecipes.map(recipe => (
+            <div key={recipe.id} className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between h-full">
+              <img src={recipe.foto} alt={recipe.nome} className="w-full h-24 object-contain rounded-lg mb-4" />
+              <h3 className="text-lg font-semibold mb-2">{recipe.nome}</h3>
+              <p className="text-gray-700 mb-4">{recipe.descricao}</p>
+              <p className="text-gray-700 mb-2">Ingredientes: {Array.isArray(recipe.ingredientes) ? recipe.ingredientes.join(', ') : 'Não disponível'}</p>
+              <p className="text-lg font-bold text-blue-600 mb-4">R$ {recipe.preco}</p>
+              <div className="flex items-center justify-between mt-auto">
+                <button
+                  onClick={() => handleBuyClick(recipe)}
+                  className="bg-blue-500 text-white p-2 w-full rounded border border-blue-500"
+                >
+                  Comprar
+                </button>
               </div>
-            )
-          })}
+            </div>
+          ))}
         </div>
       </div>
       <Footer />
+
+      {selectedRecipe && (
+        <Modal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)}>
+          <div className="text-center">
+            <h2 className="text-2xl font-semibold mb-4">{selectedRecipe.nome}</h2>
+            <img src={selectedRecipe.foto} alt={selectedRecipe.nome} className="w-full h-24 object-contain rounded-lg mb-4 mx-auto" />
+            <p className="text-lg font-bold text-blue-600 mb-4">R$ {selectedRecipe.preco}</p>
+            <div className="flex items-center justify-center mb-4">
+              <button
+                onClick={() => handleQuantityChange(-1)}
+                className="bg-gray-200 text-gray-700 p-2 rounded"
+              >
+                -
+              </button>
+              <input
+                type="number"
+                value={quantity}
+                onChange={(e) => setQuantity(Math.max(Number(e.target.value), 1))}
+                className="mx-2 text-center border rounded p-2 w-16"
+              />
+              <button
+                onClick={() => handleQuantityChange(1)}
+                className="bg-gray-200 text-gray-700 p-2 rounded"
+              >
+                +
+              </button>
+            </div>
+            <p className="text-lg font-bold mb-4">Total: R$ {selectedRecipe.preco * quantity}</p>
+            <button
+              onClick={handleAddToCart}
+              className="bg-blue-500 text-white p-2 w-full rounded"
+            >
+              Adicionar ao Carrinho
+            </button>
+          </div>
+        </Modal>
+      )}
     </div>
   )
 }
