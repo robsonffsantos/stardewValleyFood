@@ -27,7 +27,10 @@ export const GlobalProvider = ({ children }) => {
   }
 
   const getCartItems = () => {
-    return Object.entries(cart).map(([recipeId, quantity]) => ({ recipeId, quantity }))
+    return Object.entries(cart).map(([recipeId, quantity]) => ({
+      recipeId: Number(recipeId), // Garantindo que o recipeId seja um número
+      quantity
+    }))
   }
 
   return (

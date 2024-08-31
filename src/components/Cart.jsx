@@ -21,6 +21,16 @@ const Cart = () => {
             <div>
               {cartItems.map(({ recipeId, quantity }) => {
                 const recipe = getRecipeDetails(recipeId)
+                if (!recipe) {
+                  return (
+                    <div key={recipeId} className="flex items-center justify-between mb-4 p-4 border-b">
+                      <div>
+                        <h3 className="text-lg font-semibold text-red-600">Item não encontrado</h3>
+                        <p className="text-gray-700">Quantidade: {quantity}</p>
+                      </div>
+                    </div>
+                  )
+                }
                 return (
                   <div key={recipeId} className="flex items-center justify-between mb-4 p-4 border-b">
                     <div>
