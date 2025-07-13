@@ -59,10 +59,10 @@ const HomePage = () => {
                         <RestaurantType type="Bar" />
                     </div>
                         <div className="mt-4 mb-4 p-3 sm:p-4 flex flex-col items-center space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4 lg:space-x-8 justify-center">
-                            <Link to="/restaurants" className="w-full sm:w-auto">
+                            <Link to="/restaurants" className="w-full sm:w-auto flex justify-center">
                                 <Card title="Restaurantes"/>
                             </Link>
-                            <Link to={`/recipes/${randomRecipeId}`} className="w-full sm:w-auto">
+                            <Link to={`/recipes/${randomRecipeId}`} className="w-full sm:w-auto flex justify-center">
                                 <Card title="Me mostre uma comida diferente hoje!" />
                             </Link>
                         </div>
