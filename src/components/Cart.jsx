@@ -7,7 +7,7 @@ import Footer from '../components/Footer'
 import Modal from './Modal'
 
 const Cart = () => {
-  const { getCartItems, recipes, restaurants, clearCart, removeFromCart, addToCart } = useGlobalContext()
+  const { getCartItems, getCartRestaurants, getDeliveryFee, getCartTotal, recipes, restaurants, clearCart, removeFromCart, addToCart } = useGlobalContext()
   const { user, updateBalance } = useAuth()
   const navigate = useNavigate()
   
@@ -17,17 +17,19 @@ const Cart = () => {
   const [showDeliveryScreen, setShowDeliveryScreen] = useState(false)
 
   const cartItems = getCartItems()
+  const cartRestaurants = getCartRestaurants()
+  const deliveryFee = getDeliveryFee()
+  const totalPrice = getCartTotal()
 
   const getRecipeDetails = (recipeId) => {
     return recipes.find(recipe => recipe.id === recipeId)
   }
 
-  const getRestaurantDetails = (recipeId) => {
-    const recipe = getRecipeDetails(recipeId)
-    return restaurants.find(restaurant => restaurant.receitas.includes(recipeId))
+  const getRestaurantDetails = (restaurantId) => {
+    return restaurants.find(restaurant => restaurant.id === restaurantId)
   }
 
-  const totalPrice = cartItems.reduce((total, { recipeId, quantity }) => {
+  const subtotal = cartItems.reduce((total, { recipeId, quantity }) => {
     const recipe = getRecipeDetails(recipeId)
     return total + (recipe.preco * quantity)
   }, 0)
@@ -48,35 +50,30 @@ const Cart = () => {
       updateBalance(-totalPrice)
       clearCart()
       setShowDeliveryScreen(true)
-      
-      setTimeout(() => {
-        setShowDeliveryScreen(false)
-        navigate('/')
-      }, 5000)
     } else {
       alert(`Saldo insuficiente. Você tem ${user.balance} ouros, mas precisa de ${totalPrice} ouros.`)
     }
   }
 
-  const handleRemoveItem = (recipeId, currentQuantity) => {
+  const handleRemoveItem = (recipeId, restaurantId, currentQuantity) => {
     if (currentQuantity > 1) {
-      setItemToRemove({ recipeId, currentQuantity })
+      setItemToRemove({ recipeId, restaurantId, currentQuantity })
       setRemoveQuantity(1)
       setShowRemoveModal(true)
     } else {
-      removeFromCart(recipeId)
+      removeFromCart(recipeId, restaurantId)
     }
   }
 
   const confirmRemove = () => {
     if (itemToRemove) {
-      const { recipeId, currentQuantity } = itemToRemove
+      const { recipeId, restaurantId, currentQuantity } = itemToRemove
       const newQuantity = currentQuantity - removeQuantity
       
       if (newQuantity <= 0) {
-        removeFromCart(recipeId)
+        removeFromCart(recipeId, restaurantId)
       } else {
-        addToCart(recipeId, newQuantity)
+        addToCart(recipeId, newQuantity, restaurantId)
       }
       
       setShowRemoveModal(false)
@@ -91,9 +88,9 @@ const Cart = () => {
 
   if (showDeliveryScreen) {
     return (
-      <div className="flex flex-col min-h-screen">
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 to-amber-100">
         <Header />
-        <div className="flex-grow bg-gradient-to-br from-amber-50 to-amber-100 flex items-center justify-center p-4">
+        <div className="flex items-center justify-center min-h-[calc(100vh-200px)] p-4">
           <div className="text-center max-w-md">
             <div className="mb-8">
               <div className="relative w-32 h-32 mx-auto mb-6">
@@ -136,11 +133,11 @@ const Cart = () => {
         <div className="bg-white shadow-md rounded-lg p-4 sm:p-6 max-w-4xl mx-auto">
           {cartItems.length > 0 ? (
             <div>
-              {cartItems.map(({ recipeId, quantity }) => {
+              {cartItems.map(({ recipeId, quantity, restaurantId }) => {
                 const recipe = getRecipeDetails(recipeId)
-                const restaurant = getRestaurantDetails(recipeId)
+                const restaurant = getRestaurantDetails(restaurantId)
                 return (
-                  <div key={recipeId} className="flex flex-col sm:flex-row items-center justify-between mb-4 p-3 sm:p-4 border-b gap-3 sm:gap-4">
+                  <div key={`${recipeId}-${restaurantId}`} className="flex flex-col sm:flex-row items-center justify-between mb-4 p-3 sm:p-4 border-b gap-3 sm:gap-4">
                     <div className="flex items-center flex-1 min-w-0">
                       <img src={recipe.foto} alt={recipe.nome} className="w-12 h-12 sm:w-16 sm:h-16 object-contain mr-3 sm:mr-4 rounded" />
                       <div className="flex-grow min-w-0">
@@ -151,7 +148,7 @@ const Cart = () => {
                       </div>
                     </div>
                     <button 
-                      onClick={() => handleRemoveItem(recipeId, quantity)}
+                      onClick={() => handleRemoveItem(recipeId, restaurantId, quantity)}
                       className="bg-red-500 text-white px-3 py-1 sm:px-4 sm:py-2 rounded hover:bg-red-600 transition-colors duration-200 text-sm sm:text-base whitespace-nowrap"
                     >
                       Remover
@@ -159,22 +156,53 @@ const Cart = () => {
                   </div>
                 )
               })}
-              <div className="flex flex-col sm:flex-row justify-between items-center mt-4 sm:mt-6 gap-3 sm:gap-0">
-                <p className="text-lg sm:text-xl font-bold text-blue-600">Total: {totalPrice} ouros</p>
-                <div className="flex gap-2">
-                  <button 
-                    onClick={() => navigate('/restaurants')}
-                    className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 transition-colors duration-200 text-sm sm:text-base"
-                  >
-                    Continuar Comprando
-                  </button>
-                  <button 
-                    onClick={handleCheckout}
-                    className="bg-amber-600 text-white py-2 px-4 rounded hover:bg-amber-700 transition-colors duration-200 text-sm sm:text-base"
-                  >
-                    Finalizar Compra
-                  </button>
+              
+              <div className="border-t pt-4 mb-6">
+                <div className="text-right">
+                  <p className="text-lg sm:text-xl font-semibold text-gray-800">Subtotal: {subtotal} ouros</p>
                 </div>
+              </div>
+
+              {cartRestaurants.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800">Taxas de Entrega</h3>
+                  <div className="space-y-3">
+                    {cartRestaurants.map((restaurant) => (
+                      <div key={restaurant.id} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <h4 className="font-semibold text-gray-800">{restaurant.nome}</h4>
+                            <p className="text-sm text-gray-600">Taxa de entrega única</p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-lg font-bold text-amber-600">{restaurant.taxa_entrega} ouros</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="border-t pt-4 mb-6">
+                <div className="text-right">
+                  <p className="text-xl sm:text-2xl font-bold text-blue-600">Total: {totalPrice} ouros</p>
+                </div>
+              </div>
+
+              <div className="flex gap-2 justify-center">
+                <button 
+                  onClick={() => navigate('/restaurants')}
+                  className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 transition-colors duration-200 text-sm sm:text-base"
+                >
+                  Continuar Comprando
+                </button>
+                <button 
+                  onClick={handleCheckout}
+                  className="bg-amber-600 text-white py-2 px-4 rounded hover:bg-amber-700 transition-colors duration-200 text-sm sm:text-base"
+                >
+                  Finalizar Compra
+                </button>
               </div>
             </div>
           ) : (
@@ -197,7 +225,7 @@ const Cart = () => {
           <div className="text-center">
             <h2 className="text-xl font-semibold mb-4">Remover Item</h2>
             <p className="text-gray-700 mb-4">
-              Quantos itens de "{getRecipeDetails(itemToRemove.recipeId)?.nome}" você deseja remover?
+              Quantos itens de "{getRecipeDetails(itemToRemove?.recipeId)?.nome}" você deseja remover?
             </p>
             <div className="flex items-center justify-center mb-6">
               <button

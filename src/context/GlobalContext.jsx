@@ -14,33 +14,64 @@ export const GlobalProvider = ({ children }) => {
     setRecipes(recipesData)
   }, [])
 
-  const addToCart = (recipeId, quantity) => {
+  const addToCart = (recipeId, quantity, restaurantId) => {
+    const cartKey = `${recipeId}-${restaurantId}`
     setCart(prevCart => {
       const updatedCart = { ...prevCart }
       if (quantity === 0) {
-        delete updatedCart[recipeId]
+        delete updatedCart[cartKey]
       } else {
-        updatedCart[recipeId] = quantity
+        updatedCart[cartKey] = { recipeId, quantity, restaurantId }
       }
       return updatedCart
     })
   }
 
   const getCartItems = () => {
-    return Object.entries(cart).map(([recipeId, quantity]) => ({
-              recipeId: Number(recipeId),
-      quantity
+    return Object.values(cart).map(item => ({
+      recipeId: item.recipeId,
+      quantity: item.quantity,
+      restaurantId: item.restaurantId
     }))
+  }
+
+  const getCartRestaurants = () => {
+    const cartItems = getCartItems()
+    const restaurantIds = new Set()
+    
+    cartItems.forEach(({ restaurantId }) => {
+      restaurantIds.add(restaurantId)
+    })
+    
+    return Array.from(restaurantIds).map(id => 
+      restaurants.find(rest => rest.id === id)
+    ).filter(Boolean)
+  }
+
+  const getDeliveryFee = () => {
+    const cartRestaurants = getCartRestaurants()
+    return cartRestaurants.reduce((total, restaurant) => total + restaurant.taxa_entrega, 0)
+  }
+
+  const getCartTotal = () => {
+    const cartItems = getCartItems()
+    const subtotal = cartItems.reduce((total, { recipeId, quantity }) => {
+      const recipe = recipes.find(recipe => recipe.id === recipeId)
+      return total + (recipe.preco * quantity)
+    }, 0)
+    
+    return subtotal + getDeliveryFee()
   }
 
   const clearCart = () => {
     setCart({})
   }
 
-  const removeFromCart = (recipeId) => {
+  const removeFromCart = (recipeId, restaurantId) => {
+    const cartKey = `${recipeId}-${restaurantId}`
     setCart(prevCart => {
       const updatedCart = { ...prevCart }
-      delete updatedCart[recipeId]
+      delete updatedCart[cartKey]
       return updatedCart
     })
   }
@@ -54,6 +85,9 @@ export const GlobalProvider = ({ children }) => {
       cart,
       addToCart,
       getCartItems,
+      getCartRestaurants,
+      getDeliveryFee,
+      getCartTotal,
       clearCart,
       removeFromCart
     }}>

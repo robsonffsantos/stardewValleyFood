@@ -62,7 +62,7 @@ const RestaurantDetails = () => {
 
   const handleAddToCart = () => {
     if (quantity > 0) {
-      addToCart(selectedRecipe.id, quantity)
+      addToCart(selectedRecipe.id, quantity, restaurant.id)
       setIsModalOpen(false)
     }
   }  
