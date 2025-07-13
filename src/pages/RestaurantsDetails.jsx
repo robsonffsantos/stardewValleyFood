@@ -144,7 +144,7 @@ const RestaurantDetails = () => {
                 type="number"
                 value={quantity}
                 onChange={(e) => setQuantity(Math.max(Number(e.target.value), 1))}
-                className="mx-2 text-center border rounded p-2 w-16"
+                className="mx-2 text-center border rounded p-2 w-16 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               />
               <button
                 onClick={() => handleQuantityChange(1)}
