@@ -108,14 +108,21 @@ const RestaurantDetails = () => {
             recipes
               .filter(recipe => restaurant.receitas.includes(recipe.id))
               .flatMap(recipe => recipe.categorias)
-          )).map((category, index) => (
-            <button
-              key={index}
-              onClick={() => toggleCategory(category)}
-              className={`bg-white border border-amber-600 rounded-full px-3 py-1 sm:px-4 sm:py-2 m-1 sm:m-2 text-sm sm:text-base transition-colors duration-200 ${selectedCategory === category ? "bg-green-600 text-white font-bold shadow-md border-green-600" : "hover:bg-amber-50"}`}>
-              {category}
-            </button>
-          ))}
+          )).map((category, index) => {
+            const isSelected = selectedCategory === category;
+            return (
+              <button
+                key={index}
+                onClick={() => toggleCategory(category)}
+                className={`rounded-full px-3 py-1 sm:px-4 sm:py-2 m-1 sm:m-2 text-sm sm:text-base transition-colors duration-200 font-semibold ${
+                  isSelected 
+                    ? "bg-amber-600 text-white border-amber-600 shadow-md" 
+                    : "bg-white text-amber-600 border-amber-600 hover:bg-amber-50"
+                } border`}>
+                {category}
+              </button>
+            );
+          })}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
