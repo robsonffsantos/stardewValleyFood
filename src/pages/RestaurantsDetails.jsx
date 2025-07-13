@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useGlobalContext } from '../context/GlobalContext'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -9,6 +9,7 @@ const RestaurantDetails = () => {
   const { id } = useParams()
   const { restaurants, recipes, addToCart, getCartItems } = useGlobalContext()
   const restaurant = restaurants.find(rest => rest.id === parseInt(id))
+  const navigate = useNavigate()
 
   if (!restaurant) {
     return (
@@ -70,6 +71,18 @@ const RestaurantDetails = () => {
     <div className="flex flex-col min-h-screen">
       <Header />
       <div className="flex-grow p-4 sm:p-6 md:p-8">
+        <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <button 
+                onClick={() => navigate('/restaurants')}
+                className="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700 transition-colors duration-200 text-sm sm:text-base flex items-center gap-2"
+            >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                Voltar aos Restaurantes
+            </button>
+            <div className="flex-1"></div>
+        </div>
         <div className="bg-white shadow-md rounded-lg p-4 sm:p-6 mb-6 sm:mb-8 max-w-4xl mx-auto transition-all duration-300 hover:shadow-xl hover:scale-[1.02] cursor-pointer">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
             <img 

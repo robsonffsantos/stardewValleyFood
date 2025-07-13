@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useGlobalContext } from '../context/GlobalContext'
 import Header from "../components/Header"
 import Footer from "../components/Footer"
@@ -7,6 +7,7 @@ import Footer from "../components/Footer"
 const Restaurants = () => {
     const { restaurants } = useGlobalContext()
     const location = useLocation()
+    const navigate = useNavigate()
 
     const searchParams = new URLSearchParams(location.search)
     const tipo = searchParams.get('tipo')
@@ -19,7 +20,19 @@ const Restaurants = () => {
         <div className="flex flex-col min-h-screen bg-gray-200">
             <Header />
             <div className="flex-grow p-3 sm:p-4">
-                <h2 className="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6 text-center">Restaurantes</h2>
+                <div className="flex items-center justify-between mb-4 sm:mb-6">
+                    <button 
+                        onClick={() => navigate('/')}
+                        className="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700 transition-colors duration-200 text-sm sm:text-base flex items-center gap-2"
+                    >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                        Voltar
+                    </button>
+                    <h2 className="text-2xl sm:text-3xl font-semibold text-center flex-1">Restaurantes</h2>
+                    <div className="w-20"></div>
+                </div>
                 <div className="grid gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
                     {filteredRestaurants.length > 0 ? (
                         filteredRestaurants.map((restaurant) => (
