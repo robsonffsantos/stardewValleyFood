@@ -38,7 +38,7 @@ const Login = () => {
             {({ isSubmitting }) => (
               <Form className="bg-white shadow-md rounded px-8 pt-8 pb-8 mb-4">
                 <Link to="/">
-                  <h2 className="text-2xl hover:bg-blue-700 mb-4 text-center rounded bg-blue-500 text-white p-4">
+                  <h2 className="text-2xl hover:bg-amber-700 mb-4 text-center rounded bg-amber-600 text-white p-4 transition-colors duration-200">
                     Stardew Valley Food
                   </h2>
                 </Link>
@@ -71,7 +71,7 @@ const Login = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-24 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-24 rounded focus:outline-none focus:shadow-outline transition-colors duration-200"
                   >
                     Entrar
                   </button>

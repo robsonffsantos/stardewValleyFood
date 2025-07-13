@@ -64,7 +64,7 @@ const Cart = () => {
                 <p className="text-lg font-bold text-blue-600">Total: {totalPrice} ouros</p>
                 <button 
                   onClick={handleCheckout}
-                  className="bg-blue-500 text-white py-2 px-4 rounded"
+                  className="bg-amber-600 text-white py-2 px-4 rounded hover:bg-amber-700 transition-colors duration-200"
                 >
                   Finalizar Compra
                 </button>

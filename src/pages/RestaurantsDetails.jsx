@@ -92,7 +92,7 @@ const RestaurantDetails = () => {
             <button
               key={index}
               onClick={() => toggleCategory(category)}
-              className={`bg-white border border-black rounded-full px-4 py-2 m-2 ${selectedCategory === category ? "bg-blue-700 text-white font-semibold" : "hover:bg-gray-100"}`}>
+              className={`bg-white border border-amber-600 rounded-full px-4 py-2 m-2 transition-colors duration-200 ${selectedCategory === category ? "bg-amber-600 text-white font-bold shadow-md border-amber-600" : "hover:bg-amber-50"}`}>
               {category}
             </button>
           ))}
@@ -109,7 +109,7 @@ const RestaurantDetails = () => {
               <div className="flex items-center justify-between mt-auto">
                 <button
                   onClick={() => handleBuyClick(recipe)}
-                  className="bg-blue-500 text-white p-2 w-full rounded border border-blue-500"
+                  className="bg-amber-600 text-white p-2 w-full rounded border border-amber-600 hover:bg-amber-700 transition-colors duration-200"
                 >
                   Comprar
                 </button>
@@ -149,7 +149,7 @@ const RestaurantDetails = () => {
             <p className="text-lg font-bold mb-4">Total: R$ {selectedRecipe.preco * quantity}</p>
             <button
               onClick={handleAddToCart}
-              className="bg-blue-500 text-white p-2 w-full rounded"
+              className="bg-amber-600 text-white p-2 w-full rounded hover:bg-amber-700 transition-colors duration-200"
             >
               Adicionar ao Carrinho
             </button>

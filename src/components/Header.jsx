@@ -12,7 +12,7 @@ const Header = () => {
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0)
 
   return (
-    <header className="bg-blue-600 text-white p-4">
+    <header className="bg-amber-700 text-white p-4 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/">
           <h1 className="text-xl font-bold">Stardew Valley Food</h1>
@@ -47,7 +47,7 @@ const Header = () => {
           ) : (
             <>
               <Link to="/login">
-                <button className="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-200">
+                <button className="bg-white text-amber-700 px-4 py-2 rounded hover:bg-amber-50 font-semibold">
                   Login
                 </button>
               </Link>

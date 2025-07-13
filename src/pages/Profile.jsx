@@ -17,7 +17,7 @@ const Profile = () => {
             <div className="w-full max-w-md">
             <div className="bg-white shadow-md rounded px-8 pt-8 pb-8 mb-4">
             <Link to="/">
-                <h2 className="text-2xl hover:bg-blue-700 mb-4 text-center rounded bg-blue-500 text-white p-4">
+                <h2 className="text-2xl hover:bg-amber-700 mb-4 text-center rounded bg-amber-600 text-white p-4 transition-colors duration-200">
                     Stardew Valley Food
                 </h2>
             </Link>
@@ -26,7 +26,7 @@ const Profile = () => {
                     <h2 className="text-2xl font-bold text-center mb-2">{user.name}</h2>
                     <p className="text-center text-lg text-gray-700">Saldo: {user.balance} ouros</p>
                 <Link to="/restaurants">
-                    <h2 className="text-2xl hover:bg-blue-700 mt-4 text-center rounded bg-blue-500 text-white p-4">
+                    <h2 className="text-2xl hover:bg-amber-700 mt-4 text-center rounded bg-amber-600 text-white p-4 transition-colors duration-200">
                         Ver restaurantes
                     </h2>
                 </Link>

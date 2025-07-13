@@ -38,7 +38,7 @@ const Register = () => {
             {() => (
               <Form className="bg-white p-6 rounded shadow-md w-full max-w-md">
                 <Link to="/">
-                  <h2 className="text-2xl hover:bg-blue-700 mb-4 text-center rounded bg-blue-500 text-white p-4">
+                  <h2 className="text-2xl hover:bg-amber-700 mb-4 text-center rounded bg-amber-600 text-white p-4 transition-colors duration-200">
                     Stardew Valley Food
                   </h2>
                 </Link>
@@ -79,7 +79,7 @@ const Register = () => {
                 <div className="flex items-center justify-between">
                   <button
                     type="submit"
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-12 rounded focus:outline-none focus:shadow-outline transition-colors duration-200"
                   >
                     Registrar
                   </button>

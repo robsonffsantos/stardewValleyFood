@@ -73,7 +73,7 @@ const HomePage = () => {
             <Modal isOpen={isModalOpen} onRequestClose={handleCloseModal}>
                 <h2 className="text-xl font-bold mb-4">Atenção:</h2>
                 <p>{modalMessage}</p>
-                <button onClick={handleCloseModal} className="mt-4 p-2 bg-blue-500 text-white rounded">Ver restaurantes</button>
+                <button onClick={handleCloseModal} className="mt-4 p-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors duration-200">Ver restaurantes</button>
             </Modal>
         </div>
     )
