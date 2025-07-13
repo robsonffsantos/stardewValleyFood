@@ -18,7 +18,7 @@ const RecipeDetail = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-200">
+    <div className="flex flex-col min-h-screen">
       <Header />
       <h4 className="text-3xl font-semibold mt-6 text-center">Que tal esse prato?</h4>
       <div className="flex-grow p-4">

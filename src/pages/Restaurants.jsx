@@ -17,7 +17,7 @@ const Restaurants = () => {
         : restaurants
 
     return (
-        <div className="flex flex-col min-h-screen bg-gray-200">
+        <div className="flex flex-col min-h-screen">
             <Header />
             <div className="flex-grow p-3 sm:p-4">
                 <div className="flex items-center justify-between mb-4 sm:mb-6">

@@ -14,7 +14,7 @@ import Cart from './components/Cart'
 const App = () => {
   return (
     <Router>
-      <div className="bg-gray-200 min-h-screen">
+      <div className="bg-gradient-to-br from-amber-50 to-amber-100 min-h-screen">
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/login' element={<Login />} />
