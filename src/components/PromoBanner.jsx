@@ -6,28 +6,42 @@ const PromoBanner = ({ onClick }) => {
   const { user, updateBalance } = useAuth()
   const navigate = useNavigate()
 
+  const hasClaimedBonus = () => {
+    const lastClick = localStorage.getItem('lastPromoClick')
+    if (!lastClick) return false
+    
+    const currentTime = new Date().getTime()
+    return currentTime - lastClick < 3600000
+  }
+
   const handlePromoClick = () => {
     if (user) {
-      const lastClick = localStorage.getItem('lastPromoClick')
-      const currentTime = new Date().getTime()
-
-      if (lastClick && currentTime - lastClick < 3600000) { 
-        onClick("Você já resgatou seu bônus hoje.")
+      if (hasClaimedBonus()) { 
+        onClick("Você já aproveitou seu bônus diário! Volte amanhã para mais surpresas! 🎉")
       } else {
         updateBalance(5000)
-        localStorage.setItem('lastPromoClick', currentTime)
-        onClick("Você ganhou 5000 ouros! Aqui estão nossos restaurantes para você aproveitar seus créditos!")
+        localStorage.setItem('lastPromoClick', new Date().getTime())
+        onClick("Incrível! Você ganhou 5000 ouros! 🎉 Agora é hora de explorar nossos deliciosos restaurantes e descobrir pratos incríveis!")
       }
     } else {
       navigate("/register")
     }
   }
 
+  if (user && hasClaimedBonus()) {
+    return null
+  }
+
   return (
-    <div className="bg-gray-400 h-40 flex items-center justify-center cursor-pointer" onClick={handlePromoClick}>
-      <h2 className="text-2xl font-semibold p-8">
-        {user ? 'Clique aqui e ganhe 5000 ouros para usar em nosso site!' : 'Registre-se hoje e ganhe 5000 ouros para gastar em nossos restaurantes!'}
-      </h2>
+    <div className="bg-gradient-to-r from-amber-500 to-amber-600 h-24 sm:h-28 flex items-center justify-center cursor-pointer hover:from-amber-600 hover:to-amber-700 transition-all duration-300 shadow-lg" onClick={handlePromoClick}>
+      <div className="text-center px-4">
+        <h2 className="text-lg sm:text-xl font-bold text-white mb-1">
+          {user ? '🎁 Clique aqui e ganhe 5000 ouros!' : '🎁 Registre-se e ganhe 5000 ouros!'}
+        </h2>
+        <p className="text-sm text-amber-100">
+          {user ? 'Use seus créditos em nossos restaurantes!' : 'Comece sua jornada gastronômica!'}
+        </p>
+      </div>
     </div>
   )
 }

@@ -17,22 +17,8 @@ const HomePage = () => {
     const { user, updateBalance } = useAuth()
     const navigate = useNavigate()
 
-    const handleOpenModal = () => {
-        const lastClick = localStorage.getItem('lastPromoClick')
-        const currentTime = new Date().getTime()
-
-        if (user) {
-            if (lastClick && currentTime - lastClick < 3600000) {
-                setModalMessage("Você já resgatou seu bônus hoje.")
-            } else {
-                setModalMessage("Você ganhou 5000 ouros! Aqui estão nossos restaurantes para você aproveitar seus créditos!")
-                updateBalance(5000)
-                localStorage.setItem('lastPromoClick', currentTime)
-            }
-        } else {
-            setModalMessage("Por favor, faça login para ganhar 5000 ouros.")
-        }
-
+    const handleOpenModal = (message) => {
+        setModalMessage(message)
         setIsModalOpen(true)
     }
 
@@ -71,9 +57,21 @@ const HomePage = () => {
             <Footer />
 
             <Modal isOpen={isModalOpen} onRequestClose={handleCloseModal}>
-                <h2 className="text-xl font-bold mb-4">Atenção:</h2>
-                <p>{modalMessage}</p>
-                <button onClick={handleCloseModal} className="mt-4 p-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors duration-200">Ver restaurantes</button>
+                <div className="text-center">
+                    <div className="mb-6">
+                        <div className="w-16 h-16 mx-auto mb-4 bg-amber-100 rounded-full flex items-center justify-center">
+                            <span className="text-2xl">🎁</span>
+                        </div>
+                        <h2 className="text-2xl font-bold text-amber-800 mb-4">Parabéns!</h2>
+                        <p className="text-gray-700 text-lg leading-relaxed">{modalMessage}</p>
+                    </div>
+                    <button 
+                        onClick={handleCloseModal} 
+                        className="bg-amber-600 text-white px-8 py-3 rounded-lg hover:bg-amber-700 transition-colors duration-200 font-semibold text-lg shadow-md hover:shadow-lg transform hover:scale-105"
+                    >
+                        Explorar Restaurantes
+                    </button>
+                </div>
             </Modal>
         </div>
     )
