@@ -645,7 +645,7 @@
         "ingredientes": ["Xarope de ácer", "Açúcar", "Farinha de trigo"],
         "preco": 300,
         "foto": "https://stardewvalleywiki.com/mediawiki/images/1/18/Maple_Bar.png",
-        "categorias": ["Sobremesa", ""]
+        "categorias": ["Sobremesa"]
     },
     {
         "id": 172,

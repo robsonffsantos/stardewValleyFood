@@ -26,18 +26,26 @@ const RestaurantDetails = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedRecipe, setSelectedRecipe] = useState(null)
   const [quantity, setQuantity] = useState(1)
+  const [selectedCategory, setSelectedCategory] = useState(null)
+
+  // Função utilitária para normalizar categorias
+  const normalize = str => str.normalize('NFD').replace(/\p{Diacritic}/gu, '').trim().toLowerCase();
 
   const filteredRecipes = recipes.filter(recipe =>
     restaurant.receitas.includes(recipe.id) &&
-    (selectedCategories.length === 0 || selectedCategories.some(category => recipe.categorias.includes(category)))
+    (selectedCategory === null || 
+      recipe.categorias.some(cat => normalize(cat) === normalize(selectedCategory))
+    )
   )
 
   const toggleCategory = (category) => {
-    setSelectedCategories(prevSelected =>
-      prevSelected.includes(category)
-        ? prevSelected.filter(cat => cat !== category)
-        : [...prevSelected, category]
-    )
+    if (selectedCategory === category) {
+      // Se clicar na mesma categoria, limpa o filtro
+      setSelectedCategory(null)
+    } else {
+      // Se clicar em uma categoria diferente, seleciona ela
+      setSelectedCategory(category)
+    }
   }
 
   const handleQuantityChange = (change) => {
@@ -75,12 +83,16 @@ const RestaurantDetails = () => {
           <p className="text-gray-700 mb-2">Tempo de Preparo: {restaurant.tempo_preparo}</p>
         </div>
         <h2 className="text-3xl font-semibold mb-6 text-center">Categorias</h2>
-        <div className="mb-6 flex flex-wrap gap-2">
-          {Array.from(new Set(recipes.flatMap(recipe => recipe.categorias))).map((category, index) => (
+        <div className="mb-6 flex flex-wrap gap-2 justify-center">
+          {Array.from(new Set(
+            recipes
+              .filter(recipe => restaurant.receitas.includes(recipe.id))
+              .flatMap(recipe => recipe.categorias)
+          )).map((category, index) => (
             <button
               key={index}
               onClick={() => toggleCategory(category)}
-              className={`bg-white border border-black rounded-full px-4 py-2 m-2 ${selectedCategories.includes(category) ? "bg-gray-300" : ""}`}>
+              className={`bg-white border border-black rounded-full px-4 py-2 m-2 ${selectedCategory === category ? "bg-blue-700 text-white font-semibold" : "hover:bg-gray-100"}`}>
               {category}
             </button>
           ))}
