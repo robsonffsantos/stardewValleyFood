@@ -16,6 +16,8 @@ const Cart = () => {
   const [removeQuantity, setRemoveQuantity] = useState(1)
   const [showDeliveryScreen, setShowDeliveryScreen] = useState(false)
   const [estimatedTime, setEstimatedTime] = useState('')
+  const [showClosedRestaurantModal, setShowClosedRestaurantModal] = useState(false)
+  const [closedRestaurants, setClosedRestaurants] = useState([])
 
   const cartItems = getCartItems()
   const cartRestaurants = getCartRestaurants()
@@ -28,6 +30,28 @@ const Cart = () => {
 
   const getRestaurantDetails = (restaurantId) => {
     return restaurants.find(restaurant => restaurant.id === restaurantId)
+  }
+
+  const isRestaurantOpen = (restaurant) => {
+    const now = new Date()
+    const currentTime = now.getHours() * 60 + now.getMinutes()
+    
+    const [openHour, openMinute] = restaurant.horario_abertura.split(':').map(Number)
+    const [closeHour, closeMinute] = restaurant.horario_fechamento.split(':').map(Number)
+    
+    const openTime = openHour * 60 + openMinute
+    const closeTime = closeHour * 60 + closeMinute
+    
+    if (closeTime < openTime) {
+      return currentTime >= openTime || currentTime <= closeTime
+    } else {
+      return currentTime >= openTime && currentTime <= closeTime
+    }
+  }
+
+  const checkRestaurantsAvailability = () => {
+    const closed = cartRestaurants.filter(restaurant => !isRestaurantOpen(restaurant))
+    return closed
   }
 
   const calculateEstimatedTime = () => {
@@ -62,6 +86,13 @@ const Cart = () => {
 
     if (cartItems.length === 0) {
       alert('Seu carrinho está vazio.')
+      return
+    }
+
+    const closedRestaurantsList = checkRestaurantsAvailability()
+    if (closedRestaurantsList.length > 0) {
+      setClosedRestaurants(closedRestaurantsList)
+      setShowClosedRestaurantModal(true)
       return
     }
 
@@ -174,6 +205,7 @@ const Cart = () => {
               {cartItems.map(({ recipeId, quantity, restaurantId }) => {
                 const recipe = getRecipeDetails(recipeId)
                 const restaurant = getRestaurantDetails(restaurantId)
+                const isOpen = isRestaurantOpen(restaurant)
                 return (
                   <div key={`${recipeId}-${restaurantId}`} className="flex flex-col sm:flex-row items-center justify-between mb-4 p-3 sm:p-4 border-b gap-3 sm:gap-4">
                     <div className="flex items-center flex-1 min-w-0">
@@ -182,7 +214,12 @@ const Cart = () => {
                         <h3 className="text-base sm:text-lg font-semibold truncate">{recipe.nome}</h3>
                         <p className="text-sm sm:text-base text-gray-700">Quantidade: {quantity}</p>
                         <p className="text-base sm:text-lg font-bold text-blue-600">{recipe.preco * quantity} ouros</p>
-                        <p className="text-xs sm:text-sm text-gray-500 truncate">Restaurante: {restaurant.nome}</p>
+                        <div className="flex items-center gap-2">
+                          <p className="text-xs sm:text-sm text-gray-500 truncate">Restaurante: {restaurant.nome}</p>
+                          <span className={`text-xs px-2 py-1 rounded-full ${isOpen ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                            {isOpen ? '🟢 Aberto' : '🔴 Fechado'}
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <button 
@@ -205,19 +242,28 @@ const Cart = () => {
                 <div className="mb-6">
                   <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800">Taxas de Entrega</h3>
                   <div className="space-y-3">
-                    {cartRestaurants.map((restaurant) => (
-                      <div key={restaurant.id} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                        <div className="flex justify-between items-center">
-                          <div>
-                            <h4 className="font-semibold text-gray-800">{restaurant.nome}</h4>
-                            <p className="text-sm text-gray-600">Taxa de entrega única</p>
-                          </div>
-                          <div className="text-right">
-                            <p className="text-lg font-bold text-amber-600">{restaurant.taxa_entrega} ouros</p>
+                    {cartRestaurants.map((restaurant) => {
+                      const isOpen = isRestaurantOpen(restaurant)
+                      return (
+                        <div key={restaurant.id} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                          <div className="flex justify-between items-center">
+                            <div>
+                              <h4 className="font-semibold text-gray-800">{restaurant.nome}</h4>
+                              <p className="text-sm text-gray-600">Taxa de entrega única</p>
+                              <p className="text-xs text-gray-500">
+                                Horário: {restaurant.horario_abertura} - {restaurant.horario_fechamento}
+                              </p>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-lg font-bold text-amber-600">{restaurant.taxa_entrega} ouros</p>
+                              <span className={`text-xs px-2 py-1 rounded-full ${isOpen ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                                {isOpen ? '🟢 Aberto' : '🔴 Fechado'}
+                              </span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      )
+                    })}
                   </div>
                 </div>
               )}
@@ -302,6 +348,37 @@ const Cart = () => {
                 Remover
               </button>
             </div>
+          </div>
+        </Modal>
+      )}
+
+      {showClosedRestaurantModal && (
+        <Modal isOpen={showClosedRestaurantModal} onRequestClose={() => setShowClosedRestaurantModal(false)}>
+          <div className="text-center">
+            <div className="text-6xl mb-4">🚫</div>
+            <h2 className="text-xl font-semibold mb-4 text-red-600">Restaurantes Fechados</h2>
+            <p className="text-gray-700 mb-6">
+              Os seguintes restaurantes estão fechados no momento:
+            </p>
+            <div className="space-y-3 mb-6">
+              {closedRestaurants.map((restaurant) => (
+                <div key={restaurant.id} className="bg-red-50 border border-red-200 rounded-lg p-3">
+                  <h3 className="font-semibold text-red-800">{restaurant.nome}</h3>
+                  <p className="text-sm text-red-600">
+                    Horário: {restaurant.horario_abertura} - {restaurant.horario_fechamento}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="text-sm text-gray-600 mb-6">
+              Por favor, remova os itens desses restaurantes ou aguarde até que abram.
+            </p>
+            <button
+              onClick={() => setShowClosedRestaurantModal(false)}
+              className="bg-amber-600 text-white px-6 py-2 rounded hover:bg-amber-700 transition-colors duration-200"
+            >
+              Entendi
+            </button>
           </div>
         </Modal>
       )}
