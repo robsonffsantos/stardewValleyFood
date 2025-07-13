@@ -1,15 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useGlobalContext } from '../context/GlobalContext'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Modal from '../components/Modal'
+import Loading from '../components/Loading'
 
 const RestaurantDetails = () => {
   const { id } = useParams()
   const { restaurants, recipes, addToCart, getCartItems } = useGlobalContext()
   const restaurant = restaurants.find(rest => rest.id === parseInt(id))
   const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(true)
+
+  const [selectedCategories, setSelectedCategories] = useState([])
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedRecipe, setSelectedRecipe] = useState(null)
+  const [quantity, setQuantity] = useState(1)
+  const [selectedCategory, setSelectedCategory] = useState(null)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 700)
+    
+    return () => clearTimeout(timer)
+  }, [id])
+
+  if (isLoading) {
+    return <Loading message="Carregando restaurante..." />
+  }
 
   if (!restaurant) {
     return (
@@ -22,12 +42,6 @@ const RestaurantDetails = () => {
       </div>
     )
   }
-
-  const [selectedCategories, setSelectedCategories] = useState([])
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [selectedRecipe, setSelectedRecipe] = useState(null)
-  const [quantity, setQuantity] = useState(1)
-  const [selectedCategory, setSelectedCategory] = useState(null)
 
   const normalize = str => str.normalize('NFD').replace(/\p{Diacritic}/gu, '').trim().toLowerCase();
 

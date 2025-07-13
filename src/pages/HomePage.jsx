@@ -7,6 +7,7 @@ import Footer from "../components/Footer"
 import PromoBanner from "../components/PromoBanner"
 import RestaurantType from "../components/RestaurantType"
 import Modal from "../components/Modal"
+import Loading from "../components/Loading"
 import { useAuth } from '../context/LoginContext'
 import { useNavigate } from "react-router-dom"
 
@@ -14,6 +15,7 @@ const HomePage = () => {
     const [randomRecipeId, setRandomRecipeId] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [modalMessage, setModalMessage] = useState("")
+    const [isLoading, setIsLoading] = useState(true)
     const { user, updateBalance } = useAuth()
     const navigate = useNavigate()
 
@@ -29,7 +31,17 @@ const HomePage = () => {
 
     useEffect(() => {
         setRandomRecipeId(Math.floor(Math.random() * 80) + 101)
+        
+        const timer = setTimeout(() => {
+            setIsLoading(false)
+        }, 500)
+        
+        return () => clearTimeout(timer)
     }, [])
+
+    if (isLoading) {
+        return <Loading message="Carregando..." />
+    }
 
     return (
         <div className="flex flex-col min-h-screen">

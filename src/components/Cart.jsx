@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useGlobalContext } from '../context/GlobalContext'
 import { useAuth } from '../context/LoginContext'
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Modal from './Modal'
+import Loading from './Loading'
 
 const Cart = () => {
   const { getCartItems, getCartRestaurants, getDeliveryFee, getCartTotal, recipes, restaurants, clearCart, removeFromCart, addToCart } = useGlobalContext()
@@ -18,11 +19,21 @@ const Cart = () => {
   const [estimatedTime, setEstimatedTime] = useState('')
   const [showClosedRestaurantModal, setShowClosedRestaurantModal] = useState(false)
   const [closedRestaurants, setClosedRestaurants] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [isProcessingCheckout, setIsProcessingCheckout] = useState(false)
 
   const cartItems = getCartItems()
   const cartRestaurants = getCartRestaurants()
   const deliveryFee = getDeliveryFee()
   const totalPrice = getCartTotal()
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 800)
+    
+    return () => clearTimeout(timer)
+  }, [])
 
   const getRecipeDetails = (recipeId) => {
     return recipes.find(recipe => recipe.id === recipeId)
@@ -77,7 +88,7 @@ const Cart = () => {
     return total + (recipe.preco * quantity)
   }, 0)
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     if (!user) {
       alert('Por favor, faça login para finalizar a compra.')
       navigate('/login')
@@ -89,39 +100,46 @@ const Cart = () => {
       return
     }
 
-    const closedRestaurantsList = checkRestaurantsAvailability()
-    if (closedRestaurantsList.length > 0) {
-      setClosedRestaurants(closedRestaurantsList)
-      setShowClosedRestaurantModal(true)
-      return
-    }
+    setIsProcessingCheckout(true)
 
-    if (user.balance >= totalPrice) {
-      updateBalance(-totalPrice)
-      
-      const purchase = {
-        date: new Date().toISOString(),
-        items: cartItems.map(item => {
-          const recipe = getRecipeDetails(item.recipeId)
-          const restaurant = getRestaurantDetails(item.restaurantId)
-          return {
-            recipeName: recipe.nome,
-            restaurantName: restaurant.nome,
-            quantity: item.quantity,
-            price: recipe.preco * item.quantity
-          }
-        }),
-        total: totalPrice,
-        deliveryFee: deliveryFee
+    setTimeout(() => {
+      const closedRestaurantsList = checkRestaurantsAvailability()
+      if (closedRestaurantsList.length > 0) {
+        setClosedRestaurants(closedRestaurantsList)
+        setShowClosedRestaurantModal(true)
+        setIsProcessingCheckout(false)
+        return
       }
-      
-      addPurchaseToHistory(purchase)
-      clearCart()
-      setEstimatedTime(calculateEstimatedTime())
-      setShowDeliveryScreen(true)
-    } else {
-      alert(`Saldo insuficiente. Você tem ${user.balance} ouros, mas precisa de ${totalPrice} ouros.`)
-    }
+
+      if (user.balance >= totalPrice) {
+        updateBalance(-totalPrice)
+        
+        const purchase = {
+          date: new Date().toISOString(),
+          items: cartItems.map(item => {
+            const recipe = getRecipeDetails(item.recipeId)
+            const restaurant = getRestaurantDetails(item.restaurantId)
+            return {
+              recipeName: recipe.nome,
+              restaurantName: restaurant.nome,
+              quantity: item.quantity,
+              price: recipe.preco * item.quantity
+            }
+          }),
+          total: totalPrice,
+          deliveryFee: deliveryFee
+        }
+        
+        addPurchaseToHistory(purchase)
+        clearCart()
+        setEstimatedTime(calculateEstimatedTime())
+        setShowDeliveryScreen(true)
+        setIsProcessingCheckout(false)
+      } else {
+        alert(`Saldo insuficiente. Você tem ${user.balance} ouros, mas precisa de ${totalPrice} ouros.`)
+        setIsProcessingCheckout(false)
+      }
+    }, 1200)
   }
 
   const handleRemoveItem = (recipeId, restaurantId, currentQuantity) => {
@@ -153,6 +171,14 @@ const Cart = () => {
   const handleQuantityChange = (change) => {
     const newQuantity = Math.max(removeQuantity + change, 1)
     setRemoveQuantity(Math.min(newQuantity, itemToRemove?.currentQuantity || 1))
+  }
+
+  if (isLoading) {
+    return <Loading message="Carregando carrinho..." />
+  }
+
+  if (isProcessingCheckout) {
+    return <Loading message="Processando pedido..." />
   }
 
   if (showDeliveryScreen) {
@@ -283,9 +309,10 @@ const Cart = () => {
                 </button>
                 <button 
                   onClick={handleCheckout}
-                  className="bg-amber-600 text-white py-2 px-4 rounded hover:bg-amber-700 transition-colors duration-200 text-sm sm:text-base"
+                  disabled={isProcessingCheckout}
+                  className="bg-amber-600 text-white py-2 px-4 rounded hover:bg-amber-700 transition-colors duration-200 text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Finalizar Compra
+                  {isProcessingCheckout ? 'Processando...' : 'Finalizar Compra'}
                 </button>
               </div>
             </div>

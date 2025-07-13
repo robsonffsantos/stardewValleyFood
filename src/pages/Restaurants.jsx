@@ -1,13 +1,15 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useGlobalContext } from '../context/GlobalContext'
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import Loading from "../components/Loading"
 
 const Restaurants = () => {
     const { restaurants } = useGlobalContext()
     const location = useLocation()
     const navigate = useNavigate()
+    const [isLoading, setIsLoading] = useState(true)
 
     const searchParams = new URLSearchParams(location.search)
     const tipo = searchParams.get('tipo')
@@ -15,6 +17,18 @@ const Restaurants = () => {
     const filteredRestaurants = tipo 
         ? restaurants.filter(restaurant => restaurant.tipo.some(t => t.toLowerCase() === tipo)) 
         : restaurants
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false)
+        }, 600)
+        
+        return () => clearTimeout(timer)
+    }, [tipo])
+
+    if (isLoading) {
+        return <Loading message="Carregando restaurantes..." />
+    }
 
     return (
         <div className="flex flex-col min-h-screen">
