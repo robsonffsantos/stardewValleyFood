@@ -50,19 +50,19 @@ const HomePage = () => {
             <Header />
                 <div className="flex-grow">
                 <Banner />
-                <h4 className="text-3xl font-semibold mt-6 text-center">O que você procura?</h4>
-                    <div className="mt-2 p-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+                <h4 className="text-2xl sm:text-3xl font-semibold mt-4 sm:mt-6 text-center px-4">O que você procura?</h4>
+                    <div className="mt-2 p-3 sm:p-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-5">
                         <RestaurantType type="Café da Manhã" />
                         <RestaurantType type="Almoço" />
                         <RestaurantType type="Jantar" />
                         <RestaurantType type="24h" />
                         <RestaurantType type="Bar" />
                     </div>
-                        <div className="mt-4 mb-4 p-4 flex flex-col items-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-8 justify-center align-items">
-                            <Link to="/restaurants">
+                        <div className="mt-4 mb-4 p-3 sm:p-4 flex flex-col items-center space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4 lg:space-x-8 justify-center">
+                            <Link to="/restaurants" className="w-full sm:w-auto">
                                 <Card title="Restaurantes"/>
                             </Link>
-                            <Link to={`/recipes/${randomRecipeId}`}>
+                            <Link to={`/recipes/${randomRecipeId}`} className="w-full sm:w-auto">
                                 <Card title="Me mostre uma comida diferente hoje!" />
                             </Link>
                         </div>

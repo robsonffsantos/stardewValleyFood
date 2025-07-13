@@ -10,10 +10,10 @@ const RestaurantType = ({ type }) => {
 
   return (
     <div 
-      className="bg-white shadow-md p-4 flex flex-col items-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-8 justify-center align-items rounded hover:bg-gray-400" 
+      className="bg-white shadow-md p-3 sm:p-4 flex flex-col items-center justify-center rounded hover:bg-gray-100 transition-colors duration-200 cursor-pointer h-20 sm:h-24" 
       onClick={handleTypeClick}
     >
-      <h3 className="text-xl font-semibold">{type}</h3>
+      <h3 className="text-sm sm:text-base md:text-xl font-semibold text-center">{type}</h3>
     </div>
   )
 }

@@ -72,17 +72,27 @@ const RestaurantDetails = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="flex-grow p-8">
-        <div className="bg-white shadow-md rounded-lg p-6 mb-8">
-          <img src={restaurant.image} alt={restaurant.nome} className={`w-60 h-60 object-contain ${restaurant.id % 2 === 0 ? 'float-right ml-4' : 'float-left mr-4'}`} />
-          <h2 className="text-3xl font-semibold mb-4">{restaurant.nome}</h2>
-          <p className="text-gray-700 mb-2">{restaurant.descricao}</p>
-          <p className="text-gray-700 mb-2">Endereço: {restaurant.endereco}</p>
-          <p className="text-gray-700 mb-2">Horário: {restaurant.horario_abertura} - {restaurant.horario_fechamento}</p>
-          <p className="text-gray-700 mb-2">Taxa de Entrega: {restaurant.taxa_entrega} ouros</p>
-          <p className="text-gray-700 mb-2">Tempo de Preparo: {restaurant.tempo_preparo}</p>
+      <div className="flex-grow p-4 sm:p-6 md:p-8">
+        <div className="bg-white shadow-md rounded-lg p-4 sm:p-6 mb-6 sm:mb-8">
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+            <img 
+              src={restaurant.image} 
+              alt={restaurant.nome} 
+              className="w-32 h-32 sm:w-48 sm:h-48 md:w-60 md:h-60 object-contain rounded-lg" 
+            />
+            <div className="text-center md:text-left flex-1">
+              <h2 className="text-2xl sm:text-3xl font-semibold mb-3 sm:mb-4">{restaurant.nome}</h2>
+              <p className="text-gray-700 mb-2 text-sm sm:text-base">{restaurant.descricao}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm sm:text-base">
+                <p className="text-gray-700">Endereço: {restaurant.endereco}</p>
+                <p className="text-gray-700">Horário: {restaurant.horario_abertura} - {restaurant.horario_fechamento}</p>
+                <p className="text-gray-700">Taxa de Entrega: {restaurant.taxa_entrega} ouros</p>
+                <p className="text-gray-700">Tempo de Preparo: {restaurant.tempo_preparo}</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <h2 className="text-3xl font-semibold mb-6 text-center">Categorias</h2>
+        <h2 className="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-6 text-center">Categorias</h2>
         <div className="mb-6 flex flex-wrap gap-2 justify-center">
           {Array.from(new Set(
             recipes
@@ -92,24 +102,24 @@ const RestaurantDetails = () => {
             <button
               key={index}
               onClick={() => toggleCategory(category)}
-              className={`bg-white border border-amber-600 rounded-full px-4 py-2 m-2 transition-colors duration-200 ${selectedCategory === category ? "bg-amber-600 text-white font-bold shadow-md border-amber-600" : "hover:bg-amber-50"}`}>
+              className={`bg-white border border-amber-600 rounded-full px-3 py-1 sm:px-4 sm:py-2 m-1 sm:m-2 text-sm sm:text-base transition-colors duration-200 ${selectedCategory === category ? "bg-amber-600 text-white font-bold shadow-md border-amber-600" : "hover:bg-amber-50"}`}>
               {category}
             </button>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredRecipes.map(recipe => (
-            <div key={recipe.id} className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between h-full">
-              <img src={recipe.foto} alt={recipe.nome} className="w-full h-24 object-contain rounded-lg mb-4" />
-              <h3 className="text-lg font-semibold mb-2">{recipe.nome}</h3>
-              <p className="text-gray-700 mb-4">{recipe.descricao}</p>
-              <p className="text-gray-700 mb-2">Ingredientes: {Array.isArray(recipe.ingredientes) ? recipe.ingredientes.join(', ') : 'Não disponível'}</p>
-              <p className="text-lg font-bold text-blue-600 mb-4">R$ {recipe.preco}</p>
+            <div key={recipe.id} className="bg-white rounded-lg shadow-md p-3 sm:p-4 flex flex-col justify-between h-full">
+              <img src={recipe.foto} alt={recipe.nome} className="w-full h-20 sm:h-24 object-contain rounded-lg mb-3 sm:mb-4" />
+              <h3 className="text-base sm:text-lg font-semibold mb-2">{recipe.nome}</h3>
+              <p className="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base line-clamp-2">{recipe.descricao}</p>
+              <p className="text-gray-700 mb-2 text-xs sm:text-sm">Ingredientes: {Array.isArray(recipe.ingredientes) ? recipe.ingredientes.join(', ') : 'Não disponível'}</p>
+              <p className="text-base sm:text-lg font-bold text-blue-600 mb-3 sm:mb-4">R$ {recipe.preco}</p>
               <div className="flex items-center justify-between mt-auto">
                 <button
                   onClick={() => handleBuyClick(recipe)}
-                  className="bg-amber-600 text-white p-2 w-full rounded border border-amber-600 hover:bg-amber-700 transition-colors duration-200"
+                  className="bg-amber-600 text-white p-2 w-full rounded border border-amber-600 hover:bg-amber-700 transition-colors duration-200 text-sm sm:text-base"
                 >
                   Comprar
                 </button>

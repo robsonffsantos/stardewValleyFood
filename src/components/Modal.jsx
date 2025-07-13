@@ -7,10 +7,10 @@ const Modal = ({ isOpen, onRequestClose, children }) => {
             isOpen={isOpen}
             onRequestClose={onRequestClose}
             ariaHideApp={false}
-            className="fixed inset-0 flex items-center justify-center p-4"
+            className="fixed inset-0 flex items-center justify-center p-3 sm:p-4"
             overlayClassName="fixed inset-0 bg-black bg-opacity-50"
         >
-            <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+            <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 max-w-sm sm:max-w-md w-full mx-2">
                 {children}
             </div>
         </ReactModal>
