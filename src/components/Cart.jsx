@@ -8,7 +8,7 @@ import Modal from './Modal'
 
 const Cart = () => {
   const { getCartItems, getCartRestaurants, getDeliveryFee, getCartTotal, recipes, restaurants, clearCart, removeFromCart, addToCart } = useGlobalContext()
-  const { user, updateBalance } = useAuth()
+  const { user, updateBalance, addPurchaseToHistory } = useAuth()
   const navigate = useNavigate()
   
   const [showRemoveModal, setShowRemoveModal] = useState(false)
@@ -48,6 +48,24 @@ const Cart = () => {
 
     if (user.balance >= totalPrice) {
       updateBalance(-totalPrice)
+      
+      const purchase = {
+        date: new Date().toISOString(),
+        items: cartItems.map(item => {
+          const recipe = getRecipeDetails(item.recipeId)
+          const restaurant = getRestaurantDetails(item.restaurantId)
+          return {
+            recipeName: recipe.nome,
+            restaurantName: restaurant.nome,
+            quantity: item.quantity,
+            price: recipe.preco * item.quantity
+          }
+        }),
+        total: totalPrice,
+        deliveryFee: deliveryFee
+      }
+      
+      addPurchaseToHistory(purchase)
       clearCart()
       setShowDeliveryScreen(true)
     } else {

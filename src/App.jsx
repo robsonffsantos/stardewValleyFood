@@ -10,6 +10,7 @@ import Contact from './pages/Contact'
 import RestaurantDetails from './pages/RestaurantsDetails'
 import Profile from './pages/Profile'
 import Cart from './components/Cart'
+import PurchaseHistory from './components/PurchaseHistory'
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path='/contact' element={<Contact />} />
           <Route path="/restaurant/:id" element={<RestaurantDetails />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/purchase-history" element={<PurchaseHistory />} />
           <Route path="cart" element={<Cart />} />
         </Routes>
       </div>

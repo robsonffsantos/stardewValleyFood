@@ -46,13 +46,28 @@ export const AuthProvider = ({ children }) => {
   }
 
   const register = (name, email, password) => {
-    const newUser = { name, email, password, balance: 0 }
+    const newUser = { name, email, password, balance: 0, purchaseHistory: [] }
     setUser(newUser)
     localStorage.setItem('user', JSON.stringify(newUser))
   }
 
+  const addPurchaseToHistory = (purchase) => {
+    if (user) {
+      const updatedUser = { 
+        ...user, 
+        purchaseHistory: [...(user.purchaseHistory || []), purchase] 
+      }
+      setUser(updatedUser)
+      localStorage.setItem('user', JSON.stringify(updatedUser))
+    }
+  }
+
+  const getPurchaseHistory = () => {
+    return user?.purchaseHistory || []
+  }
+
   return (
-    <AuthContext.Provider value={{ user, login, logout, updateBalance, register }}>
+    <AuthContext.Provider value={{ user, login, logout, updateBalance, register, addPurchaseToHistory, getPurchaseHistory }}>
       {children}
     </AuthContext.Provider>
   )
