@@ -9,7 +9,7 @@ const About = () => {
             <Header />
             <div className="flex-grow p-4 sm:p-6 md:p-8">
                 <div className="max-w-4xl mx-auto">
-                    {/* Título Principal */}
+
                     <div className="text-center mb-8">
                         <Link to="/">
                             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-amber-600 mb-4 hover:text-amber-700 transition-colors duration-300">
@@ -21,7 +21,7 @@ const About = () => {
                         </p>
                     </div>
 
-                    {/* Sobre o Projeto */}
+
                     <div className="bg-white rounded-lg shadow-md p-6 mb-8">
                         <h2 className="text-2xl font-semibold mb-4 text-amber-700">Sobre o Projeto</h2>
                         <p className="text-gray-700 mb-4 leading-relaxed">
@@ -38,7 +38,7 @@ const About = () => {
                         </p>
                     </div>
 
-                    {/* Funcionalidades */}
+
                     <div className="bg-white rounded-lg shadow-md p-6 mb-8">
                         <h2 className="text-2xl font-semibold mb-4 text-amber-700">Funcionalidades Principais</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -81,7 +81,7 @@ const About = () => {
                         </div>
                     </div>
 
-                    {/* Como Testar */}
+
                     <div className="bg-white rounded-lg shadow-md p-6 mb-8">
                         <h2 className="text-2xl font-semibold mb-4 text-amber-700">Como Testar e Usar</h2>
                         
@@ -126,7 +126,7 @@ const About = () => {
                         </div>
                     </div>
 
-                    {/* Dados do Projeto */}
+
                     <div className="bg-white rounded-lg shadow-md p-6 mb-8">
                         <h2 className="text-2xl font-semibold mb-4 text-amber-700">Dados do Projeto</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -149,7 +149,7 @@ const About = () => {
                         </div>
                     </div>
 
-                    {/* Tecnologias */}
+
                     <div className="bg-white rounded-lg shadow-md p-6">
                         <h2 className="text-2xl font-semibold mb-4 text-amber-700">Tecnologias Utilizadas</h2>
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">

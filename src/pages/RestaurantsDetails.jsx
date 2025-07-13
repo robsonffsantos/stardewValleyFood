@@ -28,7 +28,6 @@ const RestaurantDetails = () => {
   const [quantity, setQuantity] = useState(1)
   const [selectedCategory, setSelectedCategory] = useState(null)
 
-  // Função utilitária para normalizar categorias
   const normalize = str => str.normalize('NFD').replace(/\p{Diacritic}/gu, '').trim().toLowerCase();
 
   const filteredRecipes = recipes.filter(recipe =>
@@ -40,10 +39,8 @@ const RestaurantDetails = () => {
 
   const toggleCategory = (category) => {
     if (selectedCategory === category) {
-      // Se clicar na mesma categoria, limpa o filtro
       setSelectedCategory(null)
     } else {
-      // Se clicar em uma categoria diferente, seleciona ela
       setSelectedCategory(category)
     }
   }

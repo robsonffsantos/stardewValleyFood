@@ -28,14 +28,22 @@ export const GlobalProvider = ({ children }) => {
 
   const getCartItems = () => {
     return Object.entries(cart).map(([recipeId, quantity]) => ({
-      recipeId: Number(recipeId), // Garantindo que o recipeId seja um número
+              recipeId: Number(recipeId),
       quantity
     }))
   }
 
   const clearCart = () => {
     setCart({})
-  }  
+  }
+
+  const removeFromCart = (recipeId) => {
+    setCart(prevCart => {
+      const updatedCart = { ...prevCart }
+      delete updatedCart[recipeId]
+      return updatedCart
+    })
+  }
 
   return (
     <GlobalContext.Provider value={{
@@ -45,7 +53,9 @@ export const GlobalProvider = ({ children }) => {
       setRecipes,
       cart,
       addToCart,
-      getCartItems
+      getCartItems,
+      clearCart,
+      removeFromCart
     }}>
       {children}
     </GlobalContext.Provider>

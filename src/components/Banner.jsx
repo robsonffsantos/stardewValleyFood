@@ -7,7 +7,6 @@ const Banner = () => {
 
   useEffect(() => {
     setRecipeList([...recipes, ...recipes])
-    // Pequeno delay para garantir que a animação comece após o carregamento
     setTimeout(() => setIsLoaded(true), 100)
   }, [])
 
