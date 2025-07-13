@@ -15,6 +15,7 @@ const Cart = () => {
   const [itemToRemove, setItemToRemove] = useState(null)
   const [removeQuantity, setRemoveQuantity] = useState(1)
   const [showDeliveryScreen, setShowDeliveryScreen] = useState(false)
+  const [estimatedTime, setEstimatedTime] = useState('')
 
   const cartItems = getCartItems()
   const cartRestaurants = getCartRestaurants()
@@ -27,6 +28,24 @@ const Cart = () => {
 
   const getRestaurantDetails = (restaurantId) => {
     return restaurants.find(restaurant => restaurant.id === restaurantId)
+  }
+
+  const calculateEstimatedTime = () => {
+    if (cartRestaurants.length === 0) return '30-45 minutos'
+    
+    const preparationTimes = cartRestaurants.map(restaurant => {
+      const timeString = restaurant.tempo_preparo
+      const minutes = parseInt(timeString.match(/\d+/)[0])
+      return minutes
+    })
+    
+    const maxPreparationTime = Math.max(...preparationTimes)
+    const randomExtraTime = Math.floor(Math.random() * 21) + 20
+    
+    const totalMinTime = maxPreparationTime + randomExtraTime
+    const totalMaxTime = maxPreparationTime + randomExtraTime + 10
+    
+    return `${totalMinTime}-${totalMaxTime} minutos`
   }
 
   const subtotal = cartItems.reduce((total, { recipeId, quantity }) => {
@@ -67,6 +86,7 @@ const Cart = () => {
       
       addPurchaseToHistory(purchase)
       clearCart()
+      setEstimatedTime(calculateEstimatedTime())
       setShowDeliveryScreen(true)
     } else {
       alert(`Saldo insuficiente. Você tem ${user.balance} ouros, mas precisa de ${totalPrice} ouros.`)
@@ -125,7 +145,7 @@ const Cart = () => {
               <div className="w-full bg-amber-200 rounded-full h-2 mb-6">
                 <div className="bg-amber-600 h-2 rounded-full animate-pulse" style={{ width: '60%' }}></div>
               </div>
-              <p className="text-sm text-amber-600 mb-8">Tempo estimado: 30-45 minutos</p>
+              <p className="text-sm text-amber-600 mb-8">Tempo estimado: {estimatedTime}</p>
               <button 
                 onClick={() => {
                   setShowDeliveryScreen(false)
