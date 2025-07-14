@@ -231,6 +231,10 @@ O projeto é inspirado no jogo Stardew Valley, incorporando:
 - **Locais** como Saloon, Joja Mart, Desert
 - **Receitas** do jogo (Stardrop, Coffee, etc.)
 
+## Projeto Online
+
+Acesse o projeto hospedado em: [stardewvfood.surge.sh](https://stardewvfood.surge.sh)
+
 ## 👨‍💻 Autor
 
 - GitHub: [@robsonffsantos](https://github.com/robsonffsantos)
