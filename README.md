@@ -231,21 +231,8 @@ O projeto é inspirado no jogo Stardew Valley, incorporando:
 - **Locais** como Saloon, Joja Mart, Desert
 - **Receitas** do jogo (Stardrop, Coffee, etc.)
 
-## 🤝 Contribuição
-
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
-
 ## 👨‍💻 Autor
 
-**Seu Nome**
 - GitHub: [@robsonffsantos](https://github.com/robsonffsantos)
 - LinkedIn: [Robson Fernando](https://www.linkedin.com/in/robsonffdossantos/)
 
@@ -254,4 +241,3 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 - **ConcernedApe** - Criador de Stardew Valley
 - **Comunidade React** - Recursos e documentação
 - **Tailwind CSS** - Framework de estilização
-- **Todos os contribuidores** do projeto
