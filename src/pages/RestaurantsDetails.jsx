@@ -146,7 +146,7 @@ const RestaurantDetails = () => {
               <h3 className="text-base sm:text-lg font-semibold mb-2 transition-colors duration-300 hover:text-amber-600">{recipe.nome}</h3>
               <p className="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base line-clamp-2">{recipe.descricao}</p>
               <p className="text-gray-700 mb-2 text-xs sm:text-sm">Ingredientes: {Array.isArray(recipe.ingredientes) ? recipe.ingredientes.join(', ') : 'Não disponível'}</p>
-              <p className="text-base sm:text-lg font-bold text-blue-600 mb-3 sm:mb-4">R$ {recipe.preco}</p>
+              <p className="text-base sm:text-lg font-bold text-blue-600 mb-3 sm:mb-4">{recipe.preco} ouros</p>
               <div className="flex items-center justify-between mt-auto">
                 <button
                   onClick={() => handleBuyClick(recipe)}
@@ -166,7 +166,7 @@ const RestaurantDetails = () => {
           <div className="text-center">
             <h2 className="text-2xl font-semibold mb-4">{selectedRecipe.nome}</h2>
             <img src={selectedRecipe.foto} alt={selectedRecipe.nome} className="w-full h-24 object-contain rounded-lg mb-4 mx-auto" />
-            <p className="text-lg font-bold text-blue-600 mb-4">R$ {selectedRecipe.preco}</p>
+            <p className="text-lg font-bold text-blue-600 mb-4">{selectedRecipe.preco} ouros</p>
             <div className="flex items-center justify-center mb-4">
               <button
                 onClick={() => handleQuantityChange(-1)}
@@ -187,7 +187,7 @@ const RestaurantDetails = () => {
                 +
               </button>
             </div>
-            <p className="text-lg font-bold mb-4">Total: R$ {selectedRecipe.preco * quantity}</p>
+            <p className="text-lg font-bold mb-4">Total: {selectedRecipe.preco * quantity} ouros</p>
             <button
               onClick={handleAddToCart}
               className="bg-amber-600 text-white p-2 w-full rounded hover:bg-amber-700 transition-colors duration-200"
