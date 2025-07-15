@@ -233,7 +233,7 @@ O projeto é inspirado no jogo Stardew Valley, incorporando:
 
 ## Projeto Online
 
-Acesse o projeto hospedado em: [stardewvfood.surge.sh](https://stardewvfood.surge.sh)
+Acesse o projeto hospedado em: [stardewvfood.surge.sh](https://foodstardewvalley.surge.sh)
 
 ## 👨‍💻 Autor
 
