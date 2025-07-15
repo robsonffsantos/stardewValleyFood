@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useGlobalContext } from '../context/GlobalContext'
+import { useAuth } from '../context/LoginContext'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Modal from '../components/Modal'
@@ -9,6 +10,7 @@ import Loading from '../components/Loading'
 const RestaurantDetails = () => {
   const { id } = useParams()
   const { restaurants, recipes, addToCart, getCartItems } = useGlobalContext()
+  const { user } = useAuth()
   const restaurant = restaurants.find(rest => rest.id === parseInt(id))
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true)
@@ -18,6 +20,7 @@ const RestaurantDetails = () => {
   const [selectedRecipe, setSelectedRecipe] = useState(null)
   const [quantity, setQuantity] = useState(1)
   const [selectedCategory, setSelectedCategory] = useState(null)
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -69,6 +72,10 @@ const RestaurantDetails = () => {
   }  
 
   const handleBuyClick = (recipe) => {
+    if (!user) {
+      setIsAuthModalOpen(true)
+      return
+    }
     setSelectedRecipe(recipe)
     setQuantity(1)
     setIsModalOpen(true)
@@ -197,6 +204,40 @@ const RestaurantDetails = () => {
           </div>
         </Modal>
       )}
+
+      {/* Modal de Autenticação */}
+      <Modal isOpen={isAuthModalOpen} onRequestClose={() => setIsAuthModalOpen(false)}>
+        <div className="text-center">
+          <h2 className="text-2xl font-semibold mb-4 text-amber-600">Faça Login</h2>
+          <p className="text-gray-700 mb-6">Para adicionar itens ao carrinho, você precisa estar logado.</p>
+          <div className="flex flex-col gap-3">
+            <button
+              onClick={() => {
+                setIsAuthModalOpen(false)
+                navigate('/login')
+              }}
+              className="bg-amber-600 text-white p-3 rounded hover:bg-amber-700 transition-colors duration-200 font-semibold"
+            >
+              Fazer Login
+            </button>
+            <button
+              onClick={() => {
+                setIsAuthModalOpen(false)
+                navigate('/register')
+              }}
+              className="bg-green-600 text-white p-3 rounded hover:bg-green-700 transition-colors duration-200 font-semibold"
+            >
+              Criar Conta
+            </button>
+            <button
+              onClick={() => setIsAuthModalOpen(false)}
+              className="bg-gray-500 text-white p-3 rounded hover:bg-gray-600 transition-colors duration-200 font-semibold"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </Modal>
     </div>
   )
 }
